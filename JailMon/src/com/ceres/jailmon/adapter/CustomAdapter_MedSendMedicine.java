@@ -25,6 +25,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +77,8 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		final ListItemView listItemView;
-
+		SendMedicineData sendMedicineData = mMedicineList.get(position);
+		
 		if (convertView == null) {
 			listItemView = new ListItemView();
 			convertView = listContainer.inflate(
@@ -99,12 +102,13 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 			listItemView = (ListItemView) convertView.getTag();
 		}
 
-		SendMedicineData sendMedicineData = mMedicineList.get(position);
+		
 		String medicineName = sendMedicineData.getMedName();
 		listItemView.medicineNameBtn.setText(medicineName);
 		listItemView.isChecked.setTag(position);
 		boolean selectedFlag = sendMedicineData.getSelected();
 		// 设置checkbox的点击状态
+		listItemView.isChecked.setOnCheckedChangeListener(null);
 		listItemView.isChecked.setChecked(selectedFlag);
 		listItemView.isChecked
 				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -119,12 +123,35 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 							sendMedicineData.setSelected(true);
 						} else {
 							sendMedicineData.setSelected(false);
-							sendMedicineData.setMedNum("0");
-							sendMedicineData.setMedUnit("粒");
 						}
-						notifyDataSetChanged();
+
 					}
 				});
+		// .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+		// {
+		//
+		// // @Override
+		// // public void onCheckedChanged(CompoundButton buttonView,
+		// // boolean isChecked) {
+		// // int index = (Integer) buttonView.getTag();
+		// // SendMedicineData sendMedicineData = mMedicineList
+		// // .get(index);
+		// // if (isChecked) {
+		// // sendMedicineData.setSelected(true);
+		// // } else {
+		// // sendMedicineData.setSelected(false);
+		// // //sendMedicineData.setMedNum("0");
+		// // //sendMedicineData.setMedUnit("粒");
+		// // }
+		// // notifyDataSetChanged();
+		// // }
+		//
+		// @Override
+		// public void onCheckedChanged(RadioGroup arg0, int arg1) {
+		// // TODO Auto-generated method stub
+		//
+		// }
+		// });
 		// listItemView.linear.setOnClickListener(new OnClickListener() {
 		// @Override
 		// public void onClick(View view) {
@@ -259,7 +286,7 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 							SendMedicineData sendMedicineData = mMedicineList
 									.get(index);
 							sendMedicineData.setMedUnit(unit);
-							//listItemView.unitSpinner.setSelection(position);
+							listItemView.unitSpinner.setSelection(position);
 						}
 					}
 
