@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<rypproducts>
+  <rypproduct id="001">
+    <count>1</count>
+  </rypproduct>
+<rypproduct id="1">
+    <pname>肥皂</pname>
+    <content>透明皂</content>
+    <picurl>wash_body</picurl>
+    <price>5.2</price>
+</rypproduct>
+<rypproduct id="2">
+    <pname>洗发水</pname>
+    <content>沙宣洗发水</content>
+    <picurl>wash_hair</picurl>
+    <price>5.2</price>
+</rypproduct>
+
+
+</rypproducts>

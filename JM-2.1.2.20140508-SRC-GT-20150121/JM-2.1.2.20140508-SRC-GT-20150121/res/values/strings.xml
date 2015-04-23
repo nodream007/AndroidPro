@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">监所管理</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="refresh">Refresh</string>
+    <string name="page_title">Newest StackOverflow questions tagged \'android\'</string>
+    <string name="updated">Last updated:</string>
+    <string name="lost_connection">Lost connection.</string>
+    <string name="wifi_connected">Wi-Fi reconnected.</string>
+    <string name="connection_error">没有可用的网络连接，请检查您的网络设置</string>
+    <string name="transfer_error">网络连接异常，请检查您的网络设置</string>
+    <string name="xml_error">Error parsing XML.</string>
+    
+    <string name="loading">正在载入...</string>
+    <string name="network_not_connected">网络连接失败，请检查网络设置</string>
+    <string name="xml_parser_failed">数据解析异常</string>
+    <string name="io_exception_error">文件流异常</string>
+    <string name="http_status_code_error">网络异常，错误码：%d</string>
+    <string name="http_exception_error">网络异常，请求超时</string>
+    <string name="socket_exception_error">网络异常，读取数据超时</string>
+    <string name="app_run_code_error">应用程序运行时异常</string>
+    <string name="file_not_found">服务器端找不到文件</string>
+    
+    <string name="button_ok">确定</string>
+    <string name="button_back">返回</string>
+    <string name="button_cancel">取消</string>
+    
+    <string name="button_selectall">全选</string>
+    <string name="button_selectmulti">多选</string>
+    <string name="button_selectsingle">单选</string>
+    
+     <string name="tip">提示</string>
+    <string name="tip_query_exit">\n\n您确认要退出吗？\n\n</string>
+    
+    <string name="user">用户　</string>
+    <string name="passwd">密码　 </string>
+    <string name="savelogininfo">保存用户和密码 </string>
+    <string name="login">登录 </string>
+    <string name="user_blank">请输入用户名</string>
+    <string name="passwd_blank">请输入密码</string>
+    <string name="passwd_wrong">您输入的密码不正确，请重试</string>
+    
+    <string name="prisoner_baseinfo">基本信息</string>
+    <string name="prisoner_ruleinfo">违规信息</string>
+    <string name="prisoner_account">个人账户</string>
+    <string name="prisoner_special">特殊提示</string>
+    <string name="prisoner_name">姓名</string>
+    <string name="prisoner_gender">性别</string>
+    <string name="prisoner_nation">民族</string>
+    <string name="prisoner_pid">编号</string>
+    <string name="prisoner_roomid">监房号</string>
+    <string name="prisoner_birthday">出生日期</string>
+    <string name="prisoner_idcard">身份证号</string>
+    <string name="prisoner_address">家庭住址</string>
+    <string name="prisoner_engagedate">入所日期</string>
+    <string name="prisoner_vip">是否重点人员</string>
+    <string name="prisoner_type">涉案类别</string>
+    <string name="prisoner_litigation">诉讼环节</string>
+    <string name="prisoner_case_unit">办案单位</string>
+    <string name="prisoner_case_detail">案情简介</string>
+    
+    <string name="sec_door">门 禁</string>
+    <string name="sec_call">对 讲</string>
+    <string name="sec_patrol">巡 更</string>
+    <string name="sec_alert">报 警</string>
+    <string name="sec_breakrule">违 规</string>
+    <string name="sec_room">门 开</string>
+    
+    <string name="shift_day1">周 一</string>
+    <string name="shift_day2">周 二</string>
+    <string name="shift_day3">周 三</string>
+    <string name="shift_day4">周 四</string>
+    <string name="shift_day5">周 五</string>
+    <string name="shift_day6">周 六</string>
+    <string name="shift_day7">周 日</string>
+    
+    <string name="pur_balance">账户余额</string>
+    <string name="pur_lasttime">最后结存</string>
+    <string name="pur_sum">消费总额</string>
+    <string name="pur_pay">支付</string>
+    
+    <string name="current_balance">当前余额 : </string>
+    
+    <string name="setting_server">服务器</string>
+    <string name="setting_ip">服务器名称或IP</string>
+    <string name="setting_maprefresh">巡更位置更新频率</string>
+    <string name="setting_registration">注册信息</string>
+    <string name="setting_blank_server">请输入服务器名称或IP设置</string>
+    <string name="setting_modified">系统设置已更新</string>
+    
+    <string name="not_registered">软件未注册</string>
+    <string name="serial_number">软件序列号：</string>
+    
+     <string name="over_balance">超出账户余额</string>
+    
+     <string name="submit_ok">提交成功</string>
+     <string name="submit_fail">提交失败</string>
+     
+     <string name="cell_prisoners">监室人员：</string>
+     <string name="vip_prisoners">重点人员：</string>
+        
+     <string name="advance">高级</string>
+     <string name="normal">普通</string>
+     
+     <string name="purchase_success_content_sub">收货时将从卡中扣除%1$s元</string>  
+     <string name="purchase_success_content_left">你的卡内余额%1$s元</string> 
+     <string name="purchase_failer_stock_less">对不起，%1$s库存不足无法购买</string>
+      <string name="purchase_failer_money_less">已选商品%1$s件，共计%2$s元</string>
+</resources>

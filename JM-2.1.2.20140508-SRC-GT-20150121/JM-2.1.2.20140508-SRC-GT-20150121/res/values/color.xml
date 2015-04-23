@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>  
+  <drawable name="content">#FFFFFFFF</drawable>  
+  <color name="translucent_background">#7f000000</color>
+  <color name="white">#ffffff</color><!--白色 -->  
+  <color name="gray_bg">#dbdbd9</color>
+  <color name="total_ill_type_color">#00dcff</color>
+  <color name="red">#ff0000</color>
+  <color name="black">#000000</color>
+  <color name="box_blue_line">#2c96a8</color>
+  <color name="text_blue">#65daec</color>
+  <color name="white_date_hint">#cacaca</color>
+  <color name="yellow">#fff79c</color>
+  <color name="gray">#7e7e7e</color>
+  <color name="black_blue">#d0b5fc</color>
+</resources>

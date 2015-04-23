@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/content_margin"
+     >
+
+    <TextView
+        android:id="@+id/round_send_medcine_pation_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/middle_text_size"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/round_send_medcine_ill_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBaseline="@id/round_send_medcine_pation_name"
+        android:layout_toRightOf="@+id/round_send_medcine_pation_name"
+        android:textColor="@color/text_blue"
+        android:textSize="@dimen/middle_text_size"
+         >
+    </TextView>
+
+</RelativeLayout>

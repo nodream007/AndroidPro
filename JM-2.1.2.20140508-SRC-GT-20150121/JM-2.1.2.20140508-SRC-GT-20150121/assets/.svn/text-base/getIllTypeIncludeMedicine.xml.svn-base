@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<MQIIMPMoblie>
+<totalPrisonerNum num="20"></totalPrisonerNum>
+<seriouslyIllPrisonNum num="6"></seriouslyIllPrisonNum>
+<illtype name="高血压" >
+<person name="张三"></person>
+<person name="李四"></person>
+<person name="王二"></person>
+<person name="赵文虎"></person>
+<person name="李云鹏"></person>
+</illtype>
+<illtype name="心脏病" >
+<person name="王五"></person>
+<person name="赵六"></person>
+<person name="李明"></person>
+<person name="赵文虎"></person>
+<person name="李云鹏"></person>
+<person name="王飞飞"></person>
+<person name="郭小龙"></person>
+</illtype>
+<illtype name="白血病" >
+<person name="刘磊"></person>
+<person name="吴奎"></person>
+<person name="张珺"></person>
+<person name="戴军"></person>
+<person name="王青"></person>
+<person name="蔡明明"></person>
+<person name="李大鹏"></person>
+</illtype>
+</MQIIMPMoblie>

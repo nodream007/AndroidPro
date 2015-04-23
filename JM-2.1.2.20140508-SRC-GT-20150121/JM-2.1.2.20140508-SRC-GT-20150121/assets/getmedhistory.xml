@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<MQIIMPMoblie>
+<patientInfo
+            doctor="刘医生"
+            medichineNotice="感冒药"
+            remark="这里是用药备注说明"
+            time="2014/10/20 08:00"
+            type="感冒" >
+
+            <medicine
+                name="板蓝根"
+                count="2包" >
+            </medicine>
+
+            <medicine
+                name="九九感冒灵"
+                count="2盒" >
+            </medicine>
+        </patientInfo>
+
+        <patientInfo
+            doctor="张医生"
+            medichineNotice="消炎药"
+            remark="这里是用药备注说明"
+            time="2014/10/21 09:00"
+            type="感冒" >
+
+            <medicine
+                name="阿莫西林"
+                count="1包" >
+            </medicine>
+
+            <medicine
+                name="头孢"
+                count="1盒" >
+            </medicine>
+        </patientInfo>
+
+</MQIIMPMoblie>

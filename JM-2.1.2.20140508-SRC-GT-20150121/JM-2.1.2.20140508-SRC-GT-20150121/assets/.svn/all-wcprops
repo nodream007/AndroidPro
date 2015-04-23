@@ -1,0 +1,377 @@
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets
+END
+getpersonsbyroom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getpersonsbyroom.xml
+END
+getpersonaccount.xml
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getpersonaccount.xml
+END
+getoutinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getoutinfo.xml
+END
+getIllTypeIncludeMedicine.xml
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getIllTypeIncludeMedicine.xml
+END
+getbasepersoninfobyid.xml
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getbasepersoninfobyid.xml
+END
+getsafetydefenserbinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 201
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getsafetydefenserbinfo.xml
+END
+postdoctornote.xml
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postdoctornote.xml
+END
+getmedhistory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getmedhistory.xml
+END
+signin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/signin.xml
+END
+getSendMedicine.xml
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getSendMedicine.xml
+END
+postpowerctrl.xml
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postpowerctrl.xml
+END
+getmedcleanhistory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getmedcleanhistory.xml
+END
+getallsafetydefenseinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getallsafetydefenseinfo.xml
+END
+gettxresult
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/gettxresult
+END
+getreceiptproduct.xml
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getreceiptproduct.xml
+END
+map.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/map.jpg
+END
+getmedicinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getmedicinfo.xml
+END
+getMedicinePeopleInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getMedicinePeopleInfo.xml
+END
+wash_body.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/wash_body.jpg
+END
+getdutyinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getdutyinfo.xml
+END
+postreceipt
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postreceipt
+END
+postmedicinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postmedicinfo.xml
+END
+getrbitems.xml
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getrbitems.xml
+END
+posttrainingctrl.xml
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/posttrainingctrl.xml
+END
+getbedinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getbedinfo.xml
+END
+postpolicenote.xml
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postpolicenote.xml
+END
+getlbypproduct.xml
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getlbypproduct.xml
+END
+getIndex.xml
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getIndex.xml
+END
+photo.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/photo.jpg
+END
+getdjinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getdjinfo.xml
+END
+getpolice.xml
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getpolice.xml
+END
+getrulebreak.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getrulebreak.xml
+END
+getpersoncoordinate.xml
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getpersoncoordinate.xml
+END
+wash_closet.gif
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/wash_closet.gif
+END
+wash_body
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/wash_body
+END
+postpurchase
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postpurchase
+END
+postrulebreak.xml
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postrulebreak.xml
+END
+getPatrolHistory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getPatrolHistory.xml
+END
+wash_hair.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/wash_hair.jpg
+END
+sendMedicineResult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/sendMedicineResult.xml
+END
+getMedicineTypeAndNames.xml
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getMedicineTypeAndNames.xml
+END
+getfoodproduct.xml
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getfoodproduct.xml
+END
+getmapinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getmapinfo.xml
+END
+getshiftinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getshiftinfo.xml
+END
+gettxresult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/gettxresult.xml
+END
+getjsnum.xml
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getjsnum.xml
+END
+getpersonremainder.xml
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getpersonremainder.xml
+END
+VerificationUse.xml
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/VerificationUse.xml
+END
+getRoundSendMedicine.xml
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getRoundSendMedicine.xml
+END
+getMedicineUnits.xml
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getMedicineUnits.xml
+END
+kele.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/kele.jpg
+END
+kouzhao.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/kouzhao.jpg
+END
+getphotobyid.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getphotobyid.xml
+END
+getmonitorinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getmonitorinfo.xml
+END
+getgoodinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getgoodinfo.xml
+END
+police_photo.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/police_photo.jpg
+END
+getpowerinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getpowerinfo.xml
+END
+postpatorl
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/258/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/postpatorl
+END
+AVPlaySDK.jar
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/AVPlaySDK.jar
+END
+getagentinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getagentinfo.xml
+END
+getrypproduct.xml
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/getrypproduct.xml
+END
+gettraining.xml
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/assets/gettraining.xml
+END

@@ -1,0 +1,49 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<MQIIMPMoblie>
+<RoomIndex roomId="01" name="监室1" riskDegree="1" roomType="劳模监室"
+      num="20" outRoomNum="1" forArraNum="4" securityNum="2">
+		<Police policeId = "01" name = "李玉良" type = "主管民警" ></Police>
+		<Police policeId = "02" name = "吴飞鹏" type = "协管民警" ></Police>
+	<MajorSecurity  num="3">
+	    <OurPrisoner id ="01" name="李伟海"></OurPrisoner>
+		<OurPrisoner id ="02" name="王大民"></OurPrisoner>
+		<OurPrisoner id ="03" name="高玉伦"></OurPrisoner>
+	</MajorSecurity>
+		<Duty id = "01" name = "白敬国" time = "周一" ></Duty>
+		<Duty id = "02" name = "赵亮" time = "周二" ></Duty>
+		<DisciplineWarning name="张某某" baseinfo="在监室内大声喧哗，说脏话" time="04/07 15:20"/>
+		<DisciplineWarning name="李某" baseinfo="骂人，说脏话" time="04/07 16:24"/>
+		<DoctorWarning name="李雨洋" baseinfo="拒绝服用药物" time="04/07 16:24"/>
+		<DoctorWarning name="张三里" baseinfo="高血压" time="04/07 16:24"/>
+		<CustodyWarning name="张丰顺" baseinfo="未收押" time="04/07 16:24"/>
+		<CustodyWarning name="李飞飞" baseinfo="已收押未送回" time="04/07 16:24"/>
+		<SpecialWarning name="张三" baseinfo="注意卫生习惯" time="04/07 16:24"/>
+		<SpecialWarning name="李小六" baseinfo="疾病预防" time="04/07 16:24"/>
+</RoomIndex>
+
+<RoomIndex roomId="02" name="监室2" riskDegree="1" roomType="文明监室"
+      num="20" outRoomNum="1" forArraNum="4" securityNum="2">
+<Police policeId = "01" name = "李玉良" type = "主管民警" ></Police>
+<Police policeId = "02" name = "吴飞鹏" type = "协管民警" ></Police>
+<MajorSecurity  num="3">
+    <OurPrisoner id ="01" name="李伟海"></OurPrisoner>
+	<OurPrisoner id ="02" name="王大民"></OurPrisoner>
+	<OurPrisoner id ="03" name="高玉伦"></OurPrisoner>
+</MajorSecurity>
+
+<Duty id = "01" name = "白敬国" time = "周一" ></Duty>
+<Duty id = "02" name = "赵亮" time = "周二" ></Duty>
+<DisciplineWarning name="张某某" baseinfo="在监室内大声喧哗，说脏话" time="04/07 15:20"/>
+<DisciplineWarning name="李某" baseinfo="骂人，说脏话" time="04/07 16:24"/>
+
+<DoctorWarning name="李雨洋" baseinfo="拒绝服用药物" time="04/07 16:24"/>
+<DoctorWarning name="张三里" baseinfo="高血压" time="04/07 16:24"/>
+
+<CustodyWarning name="张丰顺" baseinfo="未收押" time="04/07 16:24"/>
+<CustodyWarning name="李飞飞" baseinfo="已收押未送回" time="04/07 16:24"/>
+
+<SpecialWarning name="张三" baseinfo="注意卫生习惯" time="04/07 16:24"/>
+<SpecialWarning name="李小六" baseinfo="疾病预防" time="04/07 16:24"/>
+</RoomIndex>
+
+</MQIIMPMoblie>

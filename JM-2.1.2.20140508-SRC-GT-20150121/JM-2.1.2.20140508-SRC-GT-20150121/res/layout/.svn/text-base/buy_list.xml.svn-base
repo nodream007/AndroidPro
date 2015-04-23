@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600dp"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+     >
+
+    <LinearLayout
+        android:id="@+id/buy_list_select_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="30dp"
+        android:paddingRight="@dimen/content_margin"
+        android:paddingTop="30dp" >
+
+        <TextView
+            android:id="@+id/buy_list_radio"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/content_margin"
+             />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/buy_item_imageView1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toRightOf="@id/buy_list_select_linear" />
+
+    <TextView
+        android:id="@+id/buy_item_textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/content_margin"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/buy_item_imageView1"
+        android:textColor="#DEF7FA"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/buy_item_textView2_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="10dp"
+        android:text="单价 :"
+        android:textColor="@color/white"
+        android:textSize="@dimen/middle_text_size" />
+
+    <TextView
+        android:id="@+id/buy_item_textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/buy_item_textView2_name"
+        android:textColor="@color/text_blue"
+        android:textSize="@dimen/middle_text_size" />
+
+    <TextView
+        android:id="@+id/buy_item_textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/buy_item_imageView1"
+        android:layout_alignLeft="@+id/buy_item_textView1"
+        android:layout_below="@+id/buy_item_textView1"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#C8CFDB"
+        android:textSize="@dimen/middle_text_size" />
+
+    <TextView
+        android:id="@+id/buy_item_textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buy_item_textView3"
+        android:layout_alignLeft="@id/buy_item_textView2_name"
+        android:layout_toRightOf="@+id/buy_item_textView3"
+        android:text="购买数量:  "
+        android:textColor="@color/white"
+        android:textSize="@dimen/middle_text_size" />
+
+    <ImageView
+        android:id="@+id/sub_id"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/buy_item_textView2"
+        android:layout_toRightOf="@id/buy_item_textView4"
+        android:gravity="center"
+        android:src="@drawable/sub_btn" >
+    </ImageView>
+
+    <EditText
+        android:id="@+id/goods_num_edit"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/sub_id"
+        android:layout_alignTop="@id/sub_id"
+        android:layout_toRightOf="@id/sub_id"
+        android:background="@drawable/bg_without_corner"
+        android:gravity="center"
+        android:hint="0"
+        android:inputType="number" />
+
+    <ImageView
+        android:id="@+id/goods_num_add_id"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/sub_id"
+        android:layout_alignTop="@id/sub_id"
+        android:layout_toRightOf="@id/goods_num_edit"
+        android:src="@drawable/add_btn" >
+    </ImageView>
+
+</RelativeLayout>

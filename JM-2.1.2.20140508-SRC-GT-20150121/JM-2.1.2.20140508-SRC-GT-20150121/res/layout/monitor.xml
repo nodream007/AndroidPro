@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/subbk"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sub_03_title"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="121dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_back_style" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/layoutMain"
+            android:layout_width="190dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/sublistbg"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/lstMain"
+                android:layout_width="match_parent"
+                android:layout_height="430dp"
+                android:choiceMode="singleChoice"
+                android:divider="@drawable/list_divider_short"
+                android:drawSelectorOnTop="true"
+                android:focusable="true"
+                android:textAlignment="center" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="85dp"
+                android:src="@drawable/monitor_icon" />
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/content_margin"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <SurfaceView
+                    android:id="@+id/Sur_Player1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

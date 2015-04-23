@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/241/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon
+END
+AppException.java
+K 25
+svn:wc:ra_dav:version-url
+V 207
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/AppException.java
+END
+PrisonerInfoGridActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/PrisonerInfoGridActivity.java
+END
+MainActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 207
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MainActivity.java
+END
+ShiftInfoActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/ShiftInfoActivity.java
+END
+SettingData.java
+K 25
+svn:wc:ra_dav:version-url
+V 206
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/SettingData.java
+END
+SecurityRBActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 213
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/SecurityRBActivity.java
+END
+BaseFragmentActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/BaseFragmentActivity.java
+END
+BootBroadcastReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/BootBroadcastReceiver.java
+END
+MonitorCommonActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MonitorCommonActivity.java
+END
+AnimationUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 208
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/AnimationUtil.java
+END
+AppContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/AppContext.java
+END
+BaseActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 207
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/BaseActivity.java
+END
+PurchaseActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/PurchaseActivity.java
+END
+SettingActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 210
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/SettingActivity.java
+END
+Encryption.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/Encryption.java
+END
+OutInfoActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 210
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/OutInfoActivity.java
+END
+MonitorActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 210
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MonitorActivity.java
+END
+SendMedicineActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/SendMedicineActivity.java
+END
+MapView.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MapView.java
+END
+ApiClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/ApiClient.java
+END
+LearningActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/LearningActivity.java
+END
+PatrolMapActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/PatrolMapActivity.java
+END
+MonitorDHActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MonitorDHActivity.java
+END
+MonitorActivity4Chan.java
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MonitorActivity4Chan.java
+END
+NoteActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 207
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/NoteActivity.java
+END
+SecurityActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/SecurityActivity.java
+END
+IndexActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 208
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/IndexActivity.java
+END
+LoginActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 208
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/220/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/LoginActivity.java
+END
+PowerInfoActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/219/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/PowerInfoActivity.java
+END
+CallingActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 210
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/CallingActivity.java
+END
+MyNetSDKPlayerActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 217
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MyNetSDKPlayerActivity.java
+END
+CustomerListView.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/CustomerListView.java
+END
+PrisonerInfoActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/PrisonerInfoActivity.java
+END
+MedicineActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/218/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/MedicineActivity.java
+END
+ThreeFixedTabActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/%E5%B7%A1%E8%A7%86%E9%81%93%E8%A7%A6%E6%91%B8%E7%BB%88%E7%AB%AF%E7%B3%BB%E7%BB%9F/!svn/ver/267/%E5%AE%89%E5%8D%93%E7%AB%AF/trunk/JM-2.1.2.20140508-SRC-GT-20150121/src/com/ceres/jailmon/ThreeFixedTabActivity.java
+END

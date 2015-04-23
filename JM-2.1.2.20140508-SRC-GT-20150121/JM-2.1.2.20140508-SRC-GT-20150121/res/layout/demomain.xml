@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+
+    <LinearLayout   
+        android:id="@+id/Play"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/widget_Play"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/TV_IP"
+                android:layout_width="25dip"
+                android:layout_height="40dip"
+                android:gravity="center"
+                android:text="IP"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/EDT_IPAddr"
+                android:layout_width="150dip"
+                android:layout_height="40dip"
+                android:layout_toRightOf="@+id/TV_IP"
+                android:text="192.168.1.90" >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/TV_Port"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_toRightOf="@+id/EDT_IPAddr"
+                android:gravity="center"
+                android:text="Port"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/EDT_Port"
+                android:layout_width="80dip"
+                android:layout_height="40dip"
+                android:layout_toRightOf="@+id/TV_Port"
+                android:text="8000" />
+
+            <Button
+                android:id="@+id/btn_Login"
+                android:layout_width="100dip"
+                android:layout_height="40dip"
+                android:layout_below="@+id/TV_User"
+                android:text="Logon"
+                android:textColor="#ff000000"
+                android:textSize="18sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/btn_Preview"
+                android:layout_width="100dip"
+                android:layout_height="40dip"
+                android:layout_below="@+id/TV_User"
+                android:layout_toRightOf="@+id/btn_Login"
+                android:text="Preview"
+                android:textColor="#ff000000"
+                android:textSize="18sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/btn_Playback"
+                android:layout_width="100dip"
+                android:layout_height="40dip"
+                android:layout_below="@+id/TV_User"
+                android:layout_toRightOf="@+id/btn_Preview"
+                android:text="Playback"
+                android:textColor="#ff000000"
+                android:textSize="18sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/btn_ParamCfg"
+                android:layout_width="100dip"
+                android:layout_height="40dip"
+                android:layout_below="@+id/btn_Playback"
+                android:layout_toRightOf="@+id/EDT_DNSServer1"
+                android:text="Get Netcfg"
+                android:textColor="#ff000000"
+                android:textSize="18sp"
+                android:typeface="sans" />
+
+            <SurfaceView
+                android:id="@+id/Sur_Player"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/TV_DNS1"
+                android:background="#0000ff00" />
+
+            <TextView
+                android:id="@+id/TV_User"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_above="@+id/EDT_Psd"
+                android:layout_toRightOf="@+id/btn_Playback"
+                android:gravity="center"
+                android:text="User"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/EDT_User"
+                android:layout_width="120dip"
+                android:layout_height="40dip"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="21dp"
+                android:layout_toRightOf="@+id/TV_User"
+                android:ems="10"
+                android:text="admin" />
+
+            <EditText
+                android:id="@+id/EDT_Psd"
+                android:layout_width="120dip"
+                android:layout_height="40dip"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/TV_Psd"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:text="12345" />
+
+            <TextView
+                android:id="@+id/TV_Psd"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_above="@+id/btn_ParamCfg"
+                android:layout_toRightOf="@+id/EDT_User"
+                android:gravity="center"
+                android:text="Psd"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/EDT_DNSServer1"
+                android:layout_width="120dip"
+                android:layout_height="40dip"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="54dp"
+                android:layout_toRightOf="@+id/EDT_Psd"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/TV_DNS1"
+                android:layout_width="70dip"
+                android:layout_height="40dip"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/EDT_Psd"
+                android:gravity="center"
+                android:text="DNS1"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
