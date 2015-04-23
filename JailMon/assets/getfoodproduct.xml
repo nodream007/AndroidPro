@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<foods>
+  <food id="003">
+    <count>1</count>
+  </food>
+<food id="3">
+    <pname>方便面</pname>
+    <content>康师傅红烧牛肉面</content>
+    <picurl>ksf</picurl>
+    <price>10</price>
+</food>
+</foods>

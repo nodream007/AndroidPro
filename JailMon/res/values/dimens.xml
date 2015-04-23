@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="block_padding">8dp</dimen>
+    <dimen name="content_margin">20dp</dimen>
+    <dimen name="large_text_size">22dp</dimen>
+    <dimen name="middle_text_size">20dp</dimen>
+     <dimen name="middle_i_text_size">18dp</dimen>
+    <dimen name="small_text_size">16dp</dimen>
+</resources>

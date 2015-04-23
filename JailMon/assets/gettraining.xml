@@ -1,0 +1,23 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<MQIIMPMoblie>
+<item type="tv"  id="01" name="CCTV-1"/>
+<item type="tv"  id="02" name="CCTV-2"/>
+<item type="tv"  id="03" name="CCTV-3"/>
+<item type="tv"  id="04" name="CCTV-4"/>
+<item type="tv"  id="04" name="CCTV-4"/>
+<item type="tv"  id="04" name="CCTV-4"/>
+<item type="movie" id="02"  name="电影名"/>
+<item type="movie" id="02"  name="电影名"/>
+<item type="movie" id="02"  name="电影名"/>
+<item type="movie" id="02"  name="电影名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+<item type="music" id="03" name="音乐名"/>
+</MQIIMPMoblie>

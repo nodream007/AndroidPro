@@ -1,0 +1,28 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<MQIIMPMoblie>
+
+    <PatrolInfo
+    PolicemanName="李警官"
+    PatrolAddr="所内1号楼一楼大厅南门"
+    PatrolTime="2013 05-08 13:10">
+    </PatrolInfo>
+
+    <PatrolInfo
+    PolicemanName="李警官"
+    PatrolAddr="所内2号楼一楼大厅南门"
+    PatrolTime="2013 05-07 13:10">
+    </PatrolInfo>
+
+    <PatrolInfo
+    PolicemanName="吴警官"
+    PatrolAddr="所内3号楼一楼大厅南门"
+    PatrolTime="2013 05-06 13:10">
+    </PatrolInfo>
+
+    <PatrolInfo
+            PatrolAddr="所内4号楼一楼大厅南门"
+            PatrolTime="2013 05-05 13:10"
+            PolicemanName="孙警官">
+    </PatrolInfo>
+
+</MQIIMPMoblie>

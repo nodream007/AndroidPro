@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/content_margin" >
+
+    <TextView
+        android:id="@+id/medicine_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:text="药品种类:"
+        android:textSize="@dimen/large_text_size" />
+
+    <Spinner
+        android:id="@+id/medicine_type_spinner"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@id/medicine_type"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/medicine_type"
+        android:background="@drawable/select_listbox"
+        android:gravity="center" />
+
+   <ImageView
+ 	    android:id="@+id/history_top_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicine_type_spinner"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/list_divider_long" /> 
+
+    <GridView
+        android:id="@+id/medicine_name_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicine_type"
+        android:horizontalSpacing="10dp"
+        android:layout_marginTop="20dp"
+        android:numColumns="3" />
+
+</RelativeLayout>

@@ -1,0 +1,32 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<MQIIMPMoblie>
+<safetydefenseinfo type="mj" opendoortime="2013-04-02 10:10" doorarea="总门" dopersonid="李警官"  dotype="开门" bz="无"/>
+<safetydefenseinfo type="mj" opendoortime="2013-04-02 20:20" doorarea="总门" dopersonid="刘警官"  dotype="关门" bz="无"/>
+<safetydefenseinfo type="dj" djtime="2013-04-04 15:20" djroom="0101" djperson="张三"  djcaseinfo="要求上厕所" docase="同意" bz="无"/>
+<safetydefenseinfo type="xg" xgarea="操场前侧" xgtime="2013-05-02 20:30" xgperson="李警官"  bz="无"/>
+<safetydefenseinfo type="bj" bjarea="厨房" bjtime="2013-04-02 20:12" bjtype="电器短路" docase="已处理"  bz="无"/>
+<safetydefenseinfo type="wg" wgroom="0101" wgtime="2013-06-02 05:20" wgperson="李四" wgtype="吸烟" wgcontent="吸了一包烟吸了一包烟吸了一包烟吸了一包烟吸了一包烟吸了一包烟吸了一包烟吸了一包烟" doperson="李警官" docase="紧闭"  bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+<safetydefenseinfo type="mk" mkroom="0102" mktime="2013-03-02 12:20" mkperson="刘警官" mkcase="视察" bz="无"/>
+</MQIIMPMoblie>

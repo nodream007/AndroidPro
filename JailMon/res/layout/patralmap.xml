@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/subbk"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sub_07_title"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="121dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_back_style" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+        <RelativeLayout
+            android:id="@+id/patrol_police"
+            android:layout_width="190dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:layout_marginRight="@dimen/content_margin"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/list_border"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/regist_tips_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/police_tb1" />
+
+            <TextView
+                android:id="@+id/regist_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/regist_tips_img"
+                android:gravity="center"
+                android:text="所内民警"
+                android:textColor="@color/black_blue"
+                android:textSize="@dimen/middle_text_size" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@id/regist_tips"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/list_divider_long" />
+
+            <TextView
+                android:id="@+id/patrol"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/sign_buttom_bg"
+                android:gravity="center"
+                android:text="确认签到"
+                android:textSize="@dimen/large_text_size" />
+            
+            
+             <ListView
+                android:id="@+id/lst_police"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/patrol"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/line"
+                android:divider="@drawable/list_divider_long"
+                android:drawSelectorOnTop="true"
+                android:focusable="true"
+                android:textAlignment="center" />
+            
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/patrol_police"
+            android:background="@drawable/content_bg004"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/regist_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/regist_tips_img"
+                android:textSize="@dimen/middle_text_size"
+                android:text="历史签到信息"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text=" 姓名"
+                    android:textSize="@dimen/middle_text_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="签到地点"
+                    android:textSize="@dimen/middle_text_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="签到时间"
+                    android:textSize="@dimen/middle_text_size" />
+            </LinearLayout>
+            
+             <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@id/regist_tips"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/list_divider_long" />
+
+            <ListView
+                android:id="@+id/sigin_history"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp" >
+            </ListView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

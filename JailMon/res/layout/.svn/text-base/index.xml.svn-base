@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/index"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/index_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" >
+        </Button>
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" >
+        </Button>
+
+        <Button
+            android:id="@+id/main_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="监室一" >
+        </Button>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/index_title" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/index_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_line"
+        android:layout_toRightOf="@id/index_title" >
+
+        <ImageView
+            android:id="@+id/cell_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_tb1" />
+
+        <TextView
+            android:id="@+id/cell_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cell_img" />
+
+        <TextView
+            android:id="@+id/risk_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_img"
+            android:text="风险等级" />
+
+        <TextView
+            android:id="@+id/risk_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_img"
+            android:layout_toRightOf="@id/risk_name" />
+
+        <TextView
+            android:id="@+id/cell_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/risk_name"
+            android:text="监室类型" />
+
+        <TextView
+            android:id="@+id/cell_type_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/risk_name"
+            android:layout_toRightOf="@id/cell_type" />
+
+        <ImageView
+            android:id="@+id/main_police_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_type" />
+
+        <TextView
+            android:id="@+id/main_police_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_type"
+            android:layout_toRightOf="@id/main_police_pic"
+            android:text="主管民警" />
+
+        <TextView
+            android:id="@+id/main_police_pic_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_police_type"
+            android:layout_toRightOf="@id/main_police_pic" />
+
+        <ImageView
+            android:id="@+id/help_police_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_police_pic" />
+
+        <TextView
+            android:id="@+id/help_police_pic_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_police_pic"
+            android:layout_toRightOf="@id/help_police_pic"
+            android:text="协管民警" />
+
+        <TextView
+            android:id="@+id/help_police_pic_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/help_police_pic_type"
+            android:layout_toRightOf="@id/help_police_pic" />
+
+        <TextView
+            android:id="@+id/cell_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/help_police_pic"
+            android:text="监室总共人数:" />
+
+        <TextView
+            android:id="@+id/cell_num_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/help_police_pic"
+            android:layout_toRightOf="@id/cell_num" />
+
+        <TextView
+            android:id="@+id/cell_out_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_num"
+            android:text="外出监室人数:" />
+
+        <TextView
+            android:id="@+id/cell_out_num_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_num"
+            android:layout_toRightOf="@id/cell_out_num" />
+
+        <TextView
+            android:id="@+id/wait_array_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_out_num"
+            android:text="待提审人员数:" />
+
+        <TextView
+            android:id="@+id/wait_array_num_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cell_out_num"
+            android:layout_toRightOf="@id/cell_out_num" />
+
+        <TextView
+            android:id="@+id/security_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wait_array_num"
+            android:text="重大安全风险:" />
+
+        <TextView
+            android:id="@+id/security_num_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wait_array_num"
+            android:layout_toRightOf="@id/security_num" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_line"
+        android:layout_toRightOf="@id/index_left" >
+
+        <ImageView
+            android:id="@+id/total_situation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_tb1" />
+
+        <LinearLayout
+            android:id="@+id/total_info_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/total_situation"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="类型" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="姓名" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="基本信息" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="操作时间" />
+        </LinearLayout>
+
+        <CustomerListView
+            android:id="@+id/warning_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/total_info_content"
+            android:layout_toRightOf="@id/total_situation" />
+    </RelativeLayout>
+
+</RelativeLayout>
