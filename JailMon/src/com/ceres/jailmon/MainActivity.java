@@ -64,12 +64,12 @@ public class MainActivity extends BaseActivity {
 				bVer2 ? PrisonerInfoGridActivity.class
 						: PrisonerInfoActivity.class,
 				m_AppContext.getMonitorType() == 0 ? MonitorActivity.class
-						: MonitorDHActivity.class, LearningActivity.class,
+						: MonitorDHActivity.class, RecordActivity.class,
 				bVer2 ? SecurityRBActivity.class : SecurityActivity.class,
 				MedicineActivity.class, PatrolMapActivity.class,
 				bVer2 ? ThreeFixedTabActivity.class : CallingActivity.class,
 				OutInfoActivity.class, PurchaseActivity.class,
-				PowerInfoActivity.class, RecordActivity.class, };//SettingActivity
+				PowerInfoActivity.class, SettingActivity.class, };//LearningActivity
 
 		Button[] button = new Button[m_buttonID.length];
 

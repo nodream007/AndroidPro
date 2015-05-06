@@ -3,6 +3,7 @@ package com.ceres.jailmon.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.Editable;
@@ -13,13 +14,16 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.WindowManager.LayoutParams;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -53,6 +57,7 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 		LinearLayout addBtn;
 		EditText medNumEdit;
 		LinearLayout subLinear;
+		Button infoBut;
 	};
 
 	public CustomAdapter_MedSendMedicine(Context ctx, List<Medicine> infolist,
@@ -97,6 +102,8 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 					.findViewById(R.id.medicine_num_edit);
 			listItemView.isChecked = (CheckBox) convertView
 					.findViewById(R.id.medicine_checked);
+			listItemView.infoBut = (Button)convertView
+					.findViewById(R.id.medicine_info_btn);
 			convertView.setTag(listItemView);
 		} else {
 			listItemView = (ListItemView) convertView.getTag();
@@ -197,7 +204,7 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 						listItemView.medNumEdit.setText(String.valueOf(num));
 					}
 				} else {
-					Toast.makeText(m_context, "请先点击药品名称选中后再进行数量增减",
+					Toast.makeText(m_context, "请先选中药品后再进行数量增减",
 							Toast.LENGTH_SHORT).show();
 				}
 			}
@@ -221,7 +228,7 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 					Log.d("jiayy", "num = " + num);
 					listItemView.medNumEdit.setText(String.valueOf(num));
 				} else {
-					Toast.makeText(m_context, "请先点击药品名称选中后再进行数量增减",
+					Toast.makeText(m_context, "请先选中药品后再进行数量增减",
 							Toast.LENGTH_SHORT).show();
 				}
 			}
@@ -259,7 +266,24 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 				 */
 			}
 		});
+		listItemView.infoBut.setTag(position);
+		listItemView.infoBut.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View arg0) {
+				int index = (Integer) listItemView.medNumEdit.getTag();
+				SendMedicineData sendMedicineData = mMedicineList.get(index);
+				boolean selected = sendMedicineData.getSelected();
+				if (selected) {
+					showMedicineInstruction(index);
+				}else {
+					Toast.makeText(m_context, "请先选中药品后再进行用药说明添加",
+							Toast.LENGTH_SHORT).show();
+				}
+				
+			}
+			
+		});
 		ArrayAdapter<String> medicineUnitAdapter = new ArrayAdapter<String>(
 				m_context, android.R.layout.simple_spinner_dropdown_item,
 				mUnitList);
@@ -306,6 +330,43 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 		int left = 0;
 		int right = 0;
 		expandViewTouchDelegate(view, top, bottom, left, right);
+	}
+	/**
+	 * 用药说明dialog
+	 * @param position
+	 */
+	public void showMedicineInstruction(final int position) {
+		final Dialog dialog = new Dialog(m_context, R.style.dialog);
+		dialog.setContentView(R.layout.medicine_instruction_dialog);
+		final SendMedicineData sendMedicineData = mMedicineList.get(position);
+		if(sendMedicineData != null && sendMedicineData.getMedInstruction() != "") {
+			((EditText)dialog.findViewById(R.id.send_med_instruction)).setText(sendMedicineData.getMedInstruction());
+		}
+		if(sendMedicineData != null && sendMedicineData.getMedInstruction() != "") {
+			((EditText)dialog.findViewById(R.id.send_med_instruction)).setText(sendMedicineData.getMedInstruction());
+		}
+		Window dialogWindow = dialog.getWindow();
+		LayoutParams lp = new LayoutParams();
+		// dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+//		lp.x = 0; // 新位置X坐标
+//		lp.y = 0; // 新位置Y坐标
+		lp.width = 600; // 宽度
+		lp.height = 400; // 高度
+		lp.alpha = 0.97f; // 透明度
+		dialogWindow.setAttributes(lp);
+		dialog.show();
+		Button ok = (Button) dialog.findViewById(R.id.send_med_ok);
+		ok.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				
+				sendMedicineData.setMedInstruction(
+						((EditText)dialog.findViewById(R.id.send_med_instruction)).getText().toString());
+				sendMedicineData.setMedRemark(
+						((EditText)dialog.findViewById(R.id.send_med_remark)).getText().toString());
+				dialog.dismiss();
+			}
+		});
 	}
 
 	/**

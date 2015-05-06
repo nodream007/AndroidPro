@@ -13,6 +13,7 @@ import com.ceres.jailmon.AppException;
 import com.ceres.jailmon.data.BuyShopping;
 import com.ceres.jailmon.data.MedRoundSendMedicineList;
 import com.ceres.jailmon.data.MedicineCleanHistory;
+import com.ceres.jailmon.data.MedicineHealthyInfo;
 import com.ceres.jailmon.data.MedicineHistory;
 import com.ceres.jailmon.data.MedicineTypeAndNamesListParse;
 import com.ceres.jailmon.data.MedicineUnit;
@@ -33,6 +34,7 @@ public class BaseFragment extends Fragment {
 	final static int API_GET_RECEIPT_LIST = 40;
 	final static int API_GET_ALL_PRISONER_PHOTO_OK = 41;
 	final static int API_GET_IMG_OK = 42;
+	final static int API_GET_MED_HEALTHY_LIST_OK = 43;
 	final static int API_GET_FAIL = -1;
 
 	// 获取所内总况
@@ -98,7 +100,47 @@ public class BaseFragment extends Fragment {
 			}
 		}.start();
 	}
-
+	// 获取所外诊疗记录
+	public void getSendMedHistoryOutList(final Handler handler, final String cId,
+			final String pid, final String startDate, final String endDate,
+			final String medType) {
+		new Thread() {
+			public void run() {
+				Message msg = new Message();
+				try {
+					MedicineHistory infolist = m_AppContext.getMedOutHistoryList(
+							cId, pid, startDate, endDate, medType);
+					msg.what = API_GET_MED_HISTORY_LIST_OK;
+					msg.obj = infolist;
+				} catch (AppException e) {
+					e.printStackTrace();
+					msg.what = API_GET_FAIL;
+					Log.d("jiayy", "getSendMedHistoryList API_GET_FAIL");
+					msg.obj = e;
+				}
+				handler.sendMessage(msg);
+			}
+		}.start();
+	}
+	// 获取个人健康情况
+	public void getSendMedHealthy(final Handler handler, final String pid) {
+		new Thread() {
+			public void run() {
+				Message msg = new Message();
+				try {
+					MedicineHealthyInfo info = m_AppContext.getSendMedHealthy(pid);
+					msg.what = API_GET_MED_HEALTHY_LIST_OK;
+					msg.obj = info;
+				} catch (AppException e) {
+					e.printStackTrace();
+					msg.what = API_GET_FAIL;
+					Log.d("jiayy", "getSendMedHistoryList API_GET_FAIL");
+					msg.obj = e;
+				}
+				handler.sendMessage(msg);
+			}
+		}.start();
+	}
 	// 获取卫生防疫记录
 	public void getCleanHistoryList(final Handler handler, final String cId,
 			final String pid, final String startDate, final String endDate,
@@ -274,6 +316,9 @@ public class BaseFragment extends Fragment {
 			case API_GET_IMG_OK:
 				onReceiveAllGoodsPhotoNotify();
 				break;
+			case API_GET_MED_HEALTHY_LIST_OK:
+				onReceiveMedicineHealthyInfo((MedicineHealthyInfo)msg.obj);
+				break;
 			case API_GET_FAIL:
 				onReceiveFail((AppException) msg.obj);
 				break;
@@ -299,7 +344,10 @@ public class BaseFragment extends Fragment {
 
 	protected void onReceiveMedicineHistoryList(MedicineHistory medicineHistory) {
 	}
-
+	
+	protected void onReceiveMedicineHealthyInfo(MedicineHealthyInfo medicineHealthyInfo) {
+	}
+	
 	protected void onReceiveMedicineNameAndTypes(
 			MedicineTypeAndNamesListParse mediceAndNamesListParse) {
 	}

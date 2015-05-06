@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,10 +14,16 @@ import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.WindowManager.LayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,16 +33,18 @@ import com.ceres.jailmon.data.MedcineResult;
 import com.ceres.jailmon.data.MedicinePeopleInfo;
 import com.ceres.jailmon.data.SendMedicineData;
 import com.ceres.jailmon.fragment.SendMedFragment;
+import com.ceres.jailmon.fragment.SendMedHealthPrisonFragment;
 import com.ceres.jailmon.fragment.SendMedHistoryPrisonFragment;
-import com.ceres.jailmon.util.BitmapUtil;
 
 public class SendMedicineActivity extends BaseFragmentActivity implements
 		OnClickListener {
 	private FragmentManager mFragmentManager;
 	private static final int TAB_HISTORY = 0;
-	private static final int TAB_SEND_MED = 1;
+	private static final int TAB_HEALTH = 1;
+	private static final int TAB_SEND_MED = 2;
 	private int mIndex = TAB_HISTORY;
 	private SendMedHistoryPrisonFragment mSendMedHistoryPrisonFragment;
+	private SendMedHealthPrisonFragment mSendMedHealthPrisonFragment;
 	private SendMedFragment mSendMedFragment;
 	private String mCellId;
 	private String mPId;
@@ -89,6 +98,7 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 	private void initView() {
 		mFragmentManager = getSupportFragmentManager();
 		TextView historyText = (TextView) findViewById(R.id.person_history);
+		TextView healthText = (TextView) findViewById(R.id.person_health);
 		TextView sendMedicineText = (TextView) findViewById(R.id.medicie_detail);
 		/*
 		 * TextView totolSituationText = (TextView)
@@ -111,6 +121,7 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 		 * roundsSendMedText.setBackgroundResource(R.drawable.menu0_down);
 		 */
 		historyText.setOnClickListener(this);
+		healthText.setOnClickListener(this);
 		sendMedicineText.setOnClickListener(this);
 		// initBackButton(R.id.buttonBack);
 		mNameText = (TextView) findViewById(R.id.people_name_info);
@@ -150,7 +161,19 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 
 			@Override
 			public void onClick(View v) {
-				submitMedicineData();
+				mSendMedicineList = mSendMedFragment.getSendMedicine();
+				for (SendMedicineData data : mSendMedicineList) {
+					if (data.getSelected() && Integer.valueOf(data.getMedNum()) > 0) {
+						showMedicineInfoListDialog();
+						break;
+					}else {
+						Toast.makeText(SendMedicineActivity.this, "请先选中药品并且选择药品数量",
+								Toast.LENGTH_SHORT).show();
+						break;
+					}
+				}
+				
+				//submitMedicineData();
 			}
 
 		});
@@ -161,7 +184,43 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 
 		return formatter.format(new Date());
 	}
-
+	/**
+	 * 确认药品信息后弹出购买药品清单dialog
+	 * @param position
+	 */
+	public void showMedicineInfoListDialog() {
+		
+		final Dialog dialog = new Dialog(this, R.style.dialog);
+		dialog.setContentView(R.layout.medicine_info_list_dialog);
+		ListView mListView = (ListView) dialog.findViewById(R.id.medicine_info_list);
+		mListView.setAdapter(new MdeicineInfoListAdapter());
+		((Button) dialog.findViewById(R.id.med_ok)).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				submitMedicineData();
+				dialog.cancel();
+			}
+		});
+		((Button) dialog.findViewById(R.id.med_cancel)).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				dialog.cancel();
+				
+			}
+		});
+		Window dialogWindow = dialog.getWindow();
+		LayoutParams lp = new LayoutParams();
+		// dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+		lp.x = 0; // 新位置X坐标
+		lp.y = 10; // 新位置Y坐标
+		lp.width = 800; // 宽度
+		lp.height = 480; // 高度
+		lp.alpha = 0.96f; // 透明度
+		dialogWindow.setAttributes(lp);
+		dialog.show();
+	}
 	private void submitMedicineData() {
 		// 患者Id patientId 监室Id cId，时间 createTime，用药说明
 		// medichineNotice，备注说明remark，发药医生doctor
@@ -184,8 +243,9 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 		hideFragment(transaction);
 		switch (mIndex) {
 		case TAB_HISTORY:
-			fragmentLayout.setBackgroundResource(R.drawable.content_bg5);
+			fragmentLayout.setBackgroundResource(R.drawable.content_bg7);
 			mOkBtn.setVisibility(View.INVISIBLE);
+
 			if (mSendMedHistoryPrisonFragment == null) {
 				mSendMedHistoryPrisonFragment = new SendMedHistoryPrisonFragment(
 						mCellId, MED_HISTORY_PATIENT, mPId);
@@ -195,9 +255,22 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 				transaction.show(mSendMedHistoryPrisonFragment);
 			}
 			break;
+			//入所健康情况
+		case TAB_HEALTH:
+			fragmentLayout.setBackgroundResource(R.drawable.content_bg2);
+			mOkBtn.setVisibility(View.INVISIBLE);
+			if (mSendMedHealthPrisonFragment == null) {
+				mSendMedHealthPrisonFragment = new SendMedHealthPrisonFragment(
+						mCellId, MED_HISTORY_PATIENT, mPId);
+				transaction.add(R.id.send_medicine_content_layout,
+						mSendMedHealthPrisonFragment);
+			} else {
+				transaction.show(mSendMedHealthPrisonFragment);
+			}
+			break;
 		case TAB_SEND_MED:
 			mOkBtn.setVisibility(View.VISIBLE);
-			fragmentLayout.setBackgroundResource(R.drawable.content_bg6);
+			fragmentLayout.setBackgroundResource(R.drawable.content_bg3);
 			if (mSendMedFragment == null) {
 				mSendMedFragment = new SendMedFragment(mCellId, mPId);
 				transaction.add(R.id.send_medicine_content_layout,
@@ -234,6 +307,9 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 		if (mSendMedHistoryPrisonFragment != null) {
 			transaction.hide(mSendMedHistoryPrisonFragment);
 		}
+		if (mSendMedHealthPrisonFragment != null) {
+			transaction.hide(mSendMedHealthPrisonFragment);
+		}
 		if (mSendMedFragment != null) {
 			transaction.hide(mSendMedFragment);
 		}
@@ -248,6 +324,12 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 		case R.id.person_history:
 			if (mIndex != TAB_HISTORY) {
 				mIndex = TAB_HISTORY;
+				changeTab();
+			}
+			break;
+		case R.id.person_health:
+			if (mIndex != TAB_HEALTH) {
+				mIndex = TAB_HEALTH;
 				changeTab();
 			}
 			break;
@@ -314,5 +396,60 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 	protected void onReceivePrisonerPhoto(Bitmap bitmap) {
 		mPersonImgView.setImageBitmap(bitmap);
 	}
+	private class MdeicineInfoListAdapter extends BaseAdapter {
+		List<SendMedicineData> sendMedicineList;
+		private MdeicineInfoListAdapter() {
+			mSendMedicineList = mSendMedFragment.getSendMedicine();
+			sendMedicineList = new ArrayList<SendMedicineData>();
+			for (SendMedicineData data : mSendMedicineList) {
+				if (data.getSelected()) {
+					sendMedicineList.add(data);
+				}
+			}
+		}
 
+		@Override
+		public int getCount() {
+			return sendMedicineList.size();
+		}
+
+		@Override
+		public SendMedicineData getItem(int arg0) {
+			return sendMedicineList.get(arg0);
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			return arg0;
+		}
+
+		@Override
+		public View getView(int arg0, View arg1, ViewGroup arg2) {
+			SendMedicineData medicinListData = getItem(arg0);
+			if(medicinListData == null) {
+				return null;
+			}
+			ViewHolder holder;
+			if(arg1 == null) {
+				arg1 = LayoutInflater.from(SendMedicineActivity.this).inflate(R.layout.medicine_info_list_item, null);
+				holder = new ViewHolder();
+				holder.mMedNameView = (TextView) arg1.findViewById(R.id.medicine_name);
+				holder.mMedNumView = (TextView) arg1.findViewById(R.id.medicine_num);
+				holder.mMedUnitView = (TextView) arg1.findViewById(R.id.medicine_unit);
+				arg1.setTag(holder);
+			} else {
+				holder = (ViewHolder) arg1.getTag();
+			}
+			holder.mMedNameView.setText(medicinListData.getMedName());
+			holder.mMedNumView.setText(medicinListData.getMedNum());
+			holder.mMedUnitView.setText(medicinListData.getMedUnit());
+			return arg1;
+		}
+		
+	}
+	private static class ViewHolder {
+		TextView mMedNameView;
+		TextView mMedNumView;
+		TextView mMedUnitView;
+	}
 }

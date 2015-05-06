@@ -7,6 +7,8 @@ public class SendMedicineData {
 	private String medType;
 	private Boolean selected;
 	private String medId;
+	private String medInstruction;
+	private String medRemark;
 
 	public String getMedId() {
 		return medId;
@@ -54,6 +56,22 @@ public class SendMedicineData {
 
 	public void setMedType(String medType) {
 		this.medType = medType;
+	}
+
+	public String getMedInstruction() {
+		return medInstruction;
+	}
+
+	public void setMedInstruction(String medInstruction) {
+		this.medInstruction = medInstruction;
+	}
+
+	public String getMedRemark() {
+		return medRemark;
+	}
+
+	public void setMedRemark(String medRemark) {
+		this.medRemark = medRemark;
 	}
 
 }

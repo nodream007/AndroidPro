@@ -278,10 +278,23 @@
                     android:textSize="@dimen/middle_text_size" />
 
                 <TextView
-                    android:id="@+id/medicie_detail"
+                    android:id="@+id/person_health"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/person_history"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:textColor="@color/white"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/middle_text_size"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="10dp"
+                    android:text="入所健康登记" />
+                <TextView
+                    android:id="@+id/medicie_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/person_health"
                     android:paddingLeft="20dp"
                     android:paddingRight="30dp"
                     android:textColor="@color/white"

@@ -31,6 +31,7 @@ import com.ceres.jailmon.data.CellList;
 import com.ceres.jailmon.fragment.RountSendMedFragment;
 import com.ceres.jailmon.fragment.SendMedCleanHistoryPrisonFragment;
 import com.ceres.jailmon.fragment.SendMedHistoryPrisonFragment;
+import com.ceres.jailmon.fragment.SendMedOutHistoryPrisonFragment;
 import com.ceres.jailmon.fragment.TotalSituationFragment;
 /**
  * 医药管理 Activity
@@ -55,7 +56,7 @@ public class MedicineActivity extends BaseFragmentActivity implements
 	private TotalSituationFragment mTotalSituationFragment;
 	private RountSendMedFragment mRountSendMedFragment;
 	private SendMedHistoryPrisonFragment mSendMedHistoryInPrisonFragment;
-	private SendMedHistoryPrisonFragment mSendMedHistoryOutPrisonFragment;
+	private SendMedOutHistoryPrisonFragment mSendMedHistoryOutPrisonFragment;
 	private SendMedCleanHistoryPrisonFragment mSendMedCleanHistoryPrisonFragment;
 	private String cellId;
 	private static final String MED_HISTORY_IN_PRISONER = "in";
@@ -176,7 +177,7 @@ public class MedicineActivity extends BaseFragmentActivity implements
 			m_layoutCells.setVisibility(View.VISIBLE);
 			if (!TextUtils.isEmpty(cellId)) {
 				if (mSendMedHistoryOutPrisonFragment == null) {
-					mSendMedHistoryOutPrisonFragment = new SendMedHistoryPrisonFragment(
+					mSendMedHistoryOutPrisonFragment = new SendMedOutHistoryPrisonFragment(
 							cellId, MED_HISTORY_OUT_PRISONER, null);
 					transaction.add(R.id.content_layout,
 							mSendMedHistoryOutPrisonFragment);

@@ -45,10 +45,13 @@ import com.ceres.jailmon.data.MapLocationList;
 import com.ceres.jailmon.data.MedCleanHistoryListParse;
 import com.ceres.jailmon.data.MedRoundSendMedicineList;
 import com.ceres.jailmon.data.MedRoundSendMedicineListParse;
+import com.ceres.jailmon.data.MedSendMedicineInHealthyInfoParse;
 import com.ceres.jailmon.data.MedSendMedicineInHistoryListParse;
+import com.ceres.jailmon.data.MedSendMedicineOutHistoryListParse;
 import com.ceres.jailmon.data.MedcineInfoList;
 import com.ceres.jailmon.data.MedcineResult;
 import com.ceres.jailmon.data.MedicineCleanHistory;
+import com.ceres.jailmon.data.MedicineHealthyInfo;
 import com.ceres.jailmon.data.MedicineHistory;
 import com.ceres.jailmon.data.MedicinePeopleInfo;
 import com.ceres.jailmon.data.MedicineRoundPeopleInfoParse;
@@ -169,6 +172,10 @@ public class ApiClient {
 	public static final String API_GET_MED_PEOPLE_INFO = "/getMedicinePeopleInfo.aspx?pid=%s";
 
 	public static final String API_GET_MED_HISTORY_INFO = "/getmedhistory.aspx?roomid=%s&pid=%s&startDate=%s&endDate=%s&medType=%s";
+	
+	public static final String API_GET_MED_OUT_HISTORY_INFO = "/getmedOuthistory.aspx?roomid=%s&pid=%s&startDate=%s&endDate=%s&medType=%s";
+	
+	public static final String API_GET_MED_HEALTHY_INFO = "/gethealthyinfo.aspx?pid=%s";
 
 	public static final String API_GET_MED_CLEAN_HISTORY_INFO = "/getmedcleanhistory.aspx?roomid=%s&pid=%s&startDate=%s&endDate=%s&medType=%s";
 
@@ -245,7 +252,9 @@ public class ApiClient {
 			{ "getPoliceManInfo", "getpolice.xml" },
 			{ "GetPolicePatrol", "getPatrolHistory.xml" },
 			{ "PostPolicePatrol", "PatrolResult" },
-			{ "getIndexData", "getIndex.xml" } };
+			{ "getIndexData", "getIndex.xml" },
+			{ "gethealthyinfo", "gethealthyinfo.xml" },
+			{ "getmedOuthistory", "getmedhistoryout.xml" }};
 
 	public AppContext m_application;
 
@@ -670,6 +679,73 @@ public class ApiClient {
 		}
 
 		return medicinePatientInfo;
+	}
+	/**
+	 * 所外医疗记录
+	 * @param roomId
+	 * @param pid
+	 * @param startDate
+	 * @param endDate
+	 * @param medType
+	 * @return
+	 * @throws AppException
+	 */
+	public MedicineHistory getSendMedOutHistoryList(String roomId, String pid,
+			String startDate, String endDate, String medType)
+			throws AppException {
+
+		String url = String.format(getAPIUrl(API_GET_MED_OUT_HISTORY_INFO), roomId,
+				pid, startDate, endDate, medType);
+
+		MedicineHistory medicinePatientInfo = null;
+
+		try {
+			InputStream is = requestHttpGet(url);
+
+			if (is != null) {
+				medicinePatientInfo = MedSendMedicineOutHistoryListParse
+						.parse(is);
+				is.close();
+			}
+		}
+
+		catch (AppException e) {
+			throw e;
+		} catch (IOException e) {
+			throw AppException.http(e);
+		}
+
+		return medicinePatientInfo;
+	}
+	/**
+	 * 查询犯人的健康情况
+	 * @param pid
+	 * @return
+	 * @throws AppException
+	 */
+	public MedicineHealthyInfo getSendMedHealthy(String pid) throws AppException {
+
+		String url = String.format(getAPIUrl(API_GET_MED_HEALTHY_INFO), pid);
+
+		MedicineHealthyInfo medicineHealthyInfo = null;
+
+		try {
+			InputStream is = requestHttpGet(url);
+
+			if (is != null) {
+				medicineHealthyInfo = MedSendMedicineInHealthyInfoParse
+						.parse(is);
+				is.close();
+			}
+		}
+
+		catch (AppException e) {
+			throw e;
+		} catch (IOException e) {
+			throw AppException.http(e);
+		}
+
+		return medicineHealthyInfo;
 	}
 
 	public List<ReceiptProduct> getReceiptList(String pid) throws AppException {

@@ -68,6 +68,7 @@ public class TotalSituationFragment extends BaseFragment {
 				String illType = illTypeList.get(position);
 				List<String> personList = new ArrayList<String>();
 				personList = illTypeIncludeMedicineMap.get(illType);
+				mSerailIllNumTextView.setText(String.valueOf(personList.size()));
 				CustomAdapter_illTypePerson illTypePersonAdapter = new CustomAdapter_illTypePerson(
 						TotalSituationFragment.this.getActivity(), personList);
 				illTypePersonGridView.setAdapter(illTypePersonAdapter);
@@ -82,9 +83,9 @@ public class TotalSituationFragment extends BaseFragment {
 	protected void onReceiveTotalPrisonSituationList(
 			TotalPrisonSituationList totalPrisonSituationList) {
 		String lockNum = totalPrisonSituationList.mPrisonNum;
-		String serialNum = totalPrisonSituationList.mSeriouslyIllPrisonNum;
+		//String serialNum = totalPrisonSituationList.mSeriouslyIllPrisonNum;
 		mLockNumTextView.setText(lockNum);
-		mSerailIllNumTextView.setText(serialNum);
+		mSerailIllNumTextView.setText("0");
 		illTypeIncludeMedicineMap = totalPrisonSituationList.mIllTypeIncludeMedicineMap;
 		Set<String> key = illTypeIncludeMedicineMap.keySet();
 		for (Iterator it = key.iterator(); it.hasNext();) {

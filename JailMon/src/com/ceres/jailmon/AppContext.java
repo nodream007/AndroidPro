@@ -35,6 +35,7 @@ import com.ceres.jailmon.data.MedRoundSendMedicineList;
 import com.ceres.jailmon.data.MedcineInfoList;
 import com.ceres.jailmon.data.MedcineResult;
 import com.ceres.jailmon.data.MedicineCleanHistory;
+import com.ceres.jailmon.data.MedicineHealthyInfo;
 import com.ceres.jailmon.data.MedicineHistory;
 import com.ceres.jailmon.data.MedicinePeopleInfo;
 import com.ceres.jailmon.data.MedicineTypeAndNamesListParse;
@@ -496,7 +497,40 @@ public class AppContext extends Application {
 
 		return medicineHistory;
 	}
-	
+	//所外巡诊历史
+	public MedicineHistory getMedOutHistoryList(String roomId, String pid,String startDate,String endDate,String medType) throws AppException {
+
+		MedicineHistory medicineHistory = null;
+
+		try {
+			checkNetworkConnected();
+			medicineHistory = m_apiclient.getSendMedOutHistoryList(roomId, pid,startDate,endDate,medType);
+		} catch (AppException e) {
+			throw e;
+		}
+		if (medicineHistory == null) {
+			medicineHistory = new MedicineHistory();
+		}
+
+		return medicineHistory;
+	}
+	//个人健康状况
+	public MedicineHealthyInfo getSendMedHealthy(String pid) throws AppException {
+
+		MedicineHealthyInfo medicineHealthy = null;
+
+		try {
+			checkNetworkConnected();
+			medicineHealthy = m_apiclient.getSendMedHealthy(pid);
+		} catch (AppException e) {
+			throw e;
+		}
+		if (medicineHealthy == null) {
+			medicineHealthy = new MedicineHealthyInfo();
+		}
+
+		return medicineHealthy;
+	}
 	//所内卫生防疫
 		public MedicineCleanHistory getMedCleanHistoryList(String roomId, String pid,String startDate,String endDate,String medType) throws AppException {
 

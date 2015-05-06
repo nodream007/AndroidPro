@@ -41,4 +41,5 @@ public class MedicineInfo extends BaseData{
 
 		return m_strContent;
 	}
+	
 }

@@ -9,12 +9,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:paddingTop="5dp" >
 		<CheckBox 
 		    android:id="@+id/medicine_checked"
-		    android:layout_width="wrap_content"
-            android:layout_height="45dp"/>
+		    android:layout_width="40dp"
+            android:layout_height="40dp"
+            style="@style/CustomCheckboxTheme"/>
         <TextView
             android:id="@+id/medicine_name"
             android:layout_width="wrap_content"
@@ -22,6 +23,7 @@
             android:gravity="center"
             android:maxLines="2"
             android:paddingTop="5dp"
+            android:paddingLeft="5dp"
             android:text="测试"
             android:textColor="@color/white"
             android:textSize="@dimen/large_text_size" />
@@ -92,13 +94,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="right"
+        android:gravity="right|center"
         android:paddingBottom="10dp"
         android:paddingTop="5dp" >
 
         <Button
+            android:id="@+id/medicine_info_btn"
             android:layout_width="120dp"
             android:layout_height="45dp"
+            android:text="用药说明"
+            android:textColor="@color/white"
+            android:background="@drawable/sure_button"
             android:layout_marginRight="10dp" />
     </LinearLayout>
 
