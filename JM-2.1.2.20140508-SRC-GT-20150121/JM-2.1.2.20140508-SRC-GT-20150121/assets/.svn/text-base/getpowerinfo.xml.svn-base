@@ -1,7 +1,0 @@
-﻿<?xml version='1.0' encoding='UTF-8'?>
-<MQIIMPMoblie>
-<powerinfo ctrltype="电视" roomed="" curstatus="关"/>
-<powerinfo ctrltype="电灯" roomed="" curstatus="开"/>
-<powerinfo ctrltype="电扇" roomed="" curstatus="关"/>
-<powerinfo ctrltype="空调" roomed="" curstatus="关"/>
-</MQIIMPMoblie>

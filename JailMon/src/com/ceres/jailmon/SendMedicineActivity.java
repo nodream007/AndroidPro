@@ -257,7 +257,7 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 			break;
 			//入所健康情况
 		case TAB_HEALTH:
-			fragmentLayout.setBackgroundResource(R.drawable.content_bg2);
+			fragmentLayout.setBackgroundResource(R.drawable.content_bg8);
 			mOkBtn.setVisibility(View.INVISIBLE);
 			if (mSendMedHealthPrisonFragment == null) {
 				mSendMedHealthPrisonFragment = new SendMedHealthPrisonFragment(
@@ -270,7 +270,7 @@ public class SendMedicineActivity extends BaseFragmentActivity implements
 			break;
 		case TAB_SEND_MED:
 			mOkBtn.setVisibility(View.VISIBLE);
-			fragmentLayout.setBackgroundResource(R.drawable.content_bg3);
+			fragmentLayout.setBackgroundResource(R.drawable.content_bg9);
 			if (mSendMedFragment == null) {
 				mSendMedFragment = new SendMedFragment(mCellId, mPId);
 				transaction.add(R.id.send_medicine_content_layout,

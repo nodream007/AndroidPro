@@ -1,6 +1,0 @@
-<?php
-header("Content-type:image/jpeg");
-$img=imagecreatefromjpeg("photo.jpg");
-imagejpeg($img);
-imagedestroy($img);
-?>

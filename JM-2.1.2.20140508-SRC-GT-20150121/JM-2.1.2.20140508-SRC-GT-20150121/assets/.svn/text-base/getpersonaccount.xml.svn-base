@@ -1,7 +1,0 @@
-﻿<?xml version='1.0' encoding='UTF-8'?>
-<MQIIMPMoblie>
-<account balance="60"/>
-<item time="2013-04-01 10:10" type="充值" money="100" balance="100"/>
-<item time="2013-05-01 10:10" type="支出" money="20" balance="80"/>
-<item time="2013-05-01 10:10" type="支出" money="20" balance="60"/>
-</MQIIMPMoblie>

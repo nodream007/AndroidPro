@@ -45,12 +45,14 @@ public class OutInfoActivity extends BaseActivity implements btnListener{
 		m_layoutCells = (LinearLayout) findViewById(R.id.layoutRooms);
 		m_layoutContent = (LinearLayout) findViewById(R.id.layoutContent);
 
-		initCellListView();
+//		initCellListView();
 		initContentViews();
+		loadOutInfo();
+		
 
 		initBackButton(R.id.buttonBack);
 
-		loadCellList();
+//		loadCellList();
 	}
 
 	private void initCellListView() {
@@ -65,7 +67,7 @@ public class OutInfoActivity extends BaseActivity implements btnListener{
 				arg1.setSelected(true);
 
 				if (m_celllist != null)
-					loadOutInfo(m_celllist.getCell(arg2));
+					loadOutInfo();
 				mAdapter.setPosition(arg2);
 			}
 			
@@ -105,12 +107,9 @@ public class OutInfoActivity extends BaseActivity implements btnListener{
 		}
 	}
 
-	private void loadOutInfo(Cell cell) {
+	private void loadOutInfo() {
 
-		if (cell != null && cell.getID() != null) {
-			m_layoutContent.setVisibility(View.GONE);
-			getOutInfoList(m_basehandler, cell.getID());
-		}
+		getOutInfoList(m_basehandler,getSharedPreferences("LoginActivity", 0).getString("USER", "admin"));
 	}
 
 	protected void onReceiveOutInfoList(OutInfoList infolist) {

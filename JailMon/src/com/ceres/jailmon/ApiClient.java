@@ -125,7 +125,7 @@ public class ApiClient {
 	public static final String API_GET_POLICE_LOCATION = "/getpersoncoordinate.aspx?suoid="
 			+ UNIT_ID;
 
-	public static final String API_GET_OUT_INFO = "/getoutinfo.aspx?roomid=%s";
+	public static final String API_GET_OUT_INFO = "/getoutinfo.aspx?userName=%s";
 
 	public static final String API_GET_POWER_INFO = "/getpowerinfo.aspx?roomid=%s&suoid="
 			+ UNIT_ID;
@@ -972,7 +972,7 @@ public class ApiClient {
 
 		String field = String.format(
 				"pId=%s&currentTime=%s&cId=%s&medStr=%s&userName=%s", pId,
-				currentTime, cId, medStr, "张医生");
+				currentTime, cId, medStr, m_application.getSharedPreferences("LoginActivity", 0).getString("USER", "admin"));
 		try {
 			InputStream is = requestHttpPost(url, field);
 			if (is != null) {
@@ -992,11 +992,13 @@ public class ApiClient {
 	private String getMedicineListStr(List<SendMedicineData> sendMedicineList) {
 		StringBuilder medicineData = new StringBuilder();
 		for (SendMedicineData sendMedicineData : sendMedicineList) {
-			medicineData.append(sendMedicineData.getMedId() + ","
-					+ sendMedicineData.getMedName() + ","
-					+ sendMedicineData.getMedNum() + ","
-					+ sendMedicineData.getMedType() + ","
-					+ sendMedicineData.getMedUnit() + ";");
+			medicineData.append(sendMedicineData.getMedId() + "|"
+					+ sendMedicineData.getMedName() + "|"
+					+ sendMedicineData.getMedNum() + "|"
+					+ sendMedicineData.getMedType() + "|"
+					+ sendMedicineData.getMedUnit() + "|"
+					+ sendMedicineData.getMedInstruction() + "|"
+					+ sendMedicineData.getMedRemark() + ";");
 		}
 		return medicineData.toString();
 	}

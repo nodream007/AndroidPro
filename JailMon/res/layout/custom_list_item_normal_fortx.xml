@@ -71,13 +71,23 @@
         android:layout_marginTop="2dp"
         android:layout_toRightOf="@id/pic"
         android:textSize="@dimen/middle_i_text_size" />
+    <TextView
+        android:id="@+id/jsh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/name"
+        android:layout_below="@id/room"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/pic"
+        android:textSize="@dimen/middle_i_text_size" />
     
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/name"
-        android:layout_below="@id/room"
+        android:layout_below="@id/jsh"
         android:layout_marginRight="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
@@ -89,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/name"
-        android:layout_below="@id/room"
+        android:layout_below="@id/time"
         android:layout_marginRight="20dp"
         android:layout_marginTop="2dp"
         android:layout_toRightOf="@id/pic"

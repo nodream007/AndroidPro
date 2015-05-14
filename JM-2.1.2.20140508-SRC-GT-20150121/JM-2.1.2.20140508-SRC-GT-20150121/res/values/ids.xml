@@ -1,10 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- Messages IDs -->
-    <item name="med_num_sub" type="id"/>
-    <item name="med_num_add" type="id"/>
-    <item name="med_round_send_medicine_person" type="id"/>
-    <item name="tx_prionser_list_position" type="id"/>
-    <item name="tx_prionser_list_tx_flag" type="id"/>
-</resources>

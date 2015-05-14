@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MQIIMPMoblie>
+
+    <PersonHealthyinfo
+        BloodPre="70-140"
+        BloodType="O型"
+        DoctorSug="身体稍差，加强营养"
+        FamilyMedHis="家族遗传心脏病"
+        HealthyTime="2015/2/2 22:22:22"
+        HealthyType="稍差"
+        MyMedHis="患有心脏病"
+        PerID="430100111201012203901"
+        PoliceName="李四"
+        Remark="无"
+        nHeight="170cm"
+        nWeight="55kg" />
+
+</MQIIMPMoblie>

@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='UTF-8'?>
-<MQIIMPMoblie>
-<medicine id="001" roomed="0101" useperson="张三" sendman="李警官" sendtime="2013-05-01 07:10" medicname="板蓝根" medicnum="2" mediccontent="感冒药" bz="无"/>
-<medicine id="002" roomed="0101" useperson="李四" sendman="李警官" sendtime="2013-05-01 07:10" medicname="板蓝根" medicnum="2" mediccontent="感冒药" bz="无"/>
-<medicine id="003" roomed="0101" useperson="王二" sendman="李警官" sendtime="2013-05-01 07:10" medicname="板蓝根" medicnum="2" mediccontent="感冒药" bz="无"/>
-<medicine id="004" roomed="0101" useperson="赵五" sendman="李警官" sendtime="2013-05-01 07:10" medicname="板蓝根" medicnum="2" mediccontent="感冒药" bz="无"/>
-<doctor id="001" name="李医生"/>
-<doctor id="002" name="王医生"/>
-</MQIIMPMoblie>

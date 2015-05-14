@@ -17,6 +17,7 @@ public class OutInfo extends BaseData {
 	String desp;
 	Bitmap photo;
 	String txFlag;
+	String jsh;
 	public String getTxId() {
 		return txId;
 	}
@@ -156,4 +157,13 @@ public class OutInfo extends BaseData {
 	public void setDesp(String desp) {
 		this.desp = desp;
 	}
+
+	public String getJsh() {
+		return jsh;
+	}
+
+	public void setJsh(String jsh) {
+		this.jsh = jsh;
+	}
+	
 }

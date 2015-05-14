@@ -12,6 +12,7 @@ import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -45,7 +46,6 @@ import com.ceres.jailmon.data.OutInfoList;
 import com.ceres.jailmon.data.PatrolHistory;
 import com.ceres.jailmon.data.PatrolResult;
 import com.ceres.jailmon.data.Police;
-import com.ceres.jailmon.data.PoliceInfo;
 import com.ceres.jailmon.data.PowerCtrlResult;
 import com.ceres.jailmon.data.PowerInfoList;
 import com.ceres.jailmon.data.PrisonerDetail;
@@ -98,9 +98,10 @@ public class AppContext extends Application {
 	
 	public int getVerNum()
 	{
-		return m_setting.m_version;
+		return SettingData.m_version;
 	}
 
+	@SuppressLint("InlinedApi")
 	private boolean isNetworkConnected() {
 		boolean wifiConnected = false;
 		boolean mobileConnected = false;
@@ -621,13 +622,13 @@ public class AppContext extends Application {
 		return info;
 	}
 
-	public OutInfoList getOutInfoList(String cid) throws AppException {
+	public OutInfoList getOutInfoList(String name) throws AppException {
 
 		OutInfoList infolist = null;
 
 		try {
 			checkNetworkConnected();
-			infolist = m_apiclient.getOutInfoList(cid);
+			infolist = m_apiclient.getOutInfoList(name);
 		} catch (AppException e) {
 			throw e;
 		}

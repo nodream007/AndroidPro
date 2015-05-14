@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.ceres.jailmon.data.SignInResult;
+import com.ceres.jailmon.service.ArraignmentService;
 
 /**
  * Activity for Main Menu, which contains all entries of functions.
@@ -82,6 +83,8 @@ public class MainActivity extends BaseActivity {
 
 		// Invoke SIGN_IN API to notify device ID to server .
 		signin();
+		
+		startService(new Intent(ArraignmentService.ACTION));
 	}
 
 	@Override

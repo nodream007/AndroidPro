@@ -24,24 +24,6 @@
         android:layout_height="match_parent"
         android:orientation="horizontal" >
 
-        <LinearLayout
-            android:id="@+id/layoutRooms"
-            android:layout_width="190dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/sublistbg"
-            android:orientation="vertical" >
-
-            <ListView
-                android:id="@+id/lstRooms"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:choiceMode="singleChoice"
-                android:divider="@drawable/list_divider_short"
-                android:drawSelectorOnTop="true"
-                android:focusable="true"
-                android:textAlignment="center" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutContent"

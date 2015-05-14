@@ -32,6 +32,7 @@ public class CustomAdapter_NormalInfo_ForTX extends BaseAdapter {
 		public TextView pIdText;
 		public TextView policeText;
 		public TextView roomText;
+		public TextView jshText;
 		public TextView remarkText;
 		public ImageView image;
 		public TextView txText;
@@ -85,6 +86,8 @@ public class CustomAdapter_NormalInfo_ForTX extends BaseAdapter {
 					.findViewById(R.id.police);
 			listItemView.roomText = (TextView) convertView
 					.findViewById(R.id.room);
+			listItemView.jshText = (TextView) convertView
+					.findViewById(R.id.jsh);
 			listItemView.remarkText = (TextView) convertView
 					.findViewById(R.id.remark);
 			listItemView.image = (ImageView) convertView.findViewById(R.id.pic);
@@ -115,12 +118,16 @@ public class CustomAdapter_NormalInfo_ForTX extends BaseAdapter {
 			String txTime = info.getTime_begin();
 			txTime = String.format("发起时间：%s", txTime);
 			listItemView.timeText.setText(txTime);
+			String jsh = info.getJsh();
+			jsh = String.format("监室号：%s", jsh);
 			if (!TextUtils.isEmpty(id))
 				listItemView.pIdText.setText(id);
 			if (!TextUtils.isEmpty(police))
 				listItemView.policeText.setText(police);
 			if (!TextUtils.isEmpty(room))
 				listItemView.roomText.setText(room);
+			if (!TextUtils.isEmpty(jsh))
+				listItemView.jshText.setText(jsh);
 			Bitmap bmpPhoto = info.getPhoto();
 			if (bmpPhoto != null)
 				listItemView.image.setImageBitmap(bmpPhoto);

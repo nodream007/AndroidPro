@@ -85,6 +85,9 @@
 # view AndroidManifest.xml #generated:176
 -keep class com.ceres.jailmon.ThreeFixedTabActivity { <init>(...); }
 
+# view AndroidManifest.xml #generated:226
+-keep class com.ceres.jailmon.service.ArraignmentService { <init>(...); }
+
 # view res/layout/dhtest.xml #generated:126
 # view res/layout/fuck.xml #generated:59
 # view res/layout/monitordh.xml #generated:68

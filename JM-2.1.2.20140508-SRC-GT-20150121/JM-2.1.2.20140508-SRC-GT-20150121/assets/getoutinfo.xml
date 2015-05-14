@@ -1,5 +1,0 @@
-﻿<?xml version='1.0' encoding='UTF-8'?>
-<MQIIMPMoblie>
-<outroom txID = "01"  outpersonId="0101001" outpersom="张三" domj="李警官"  txroom="T-01" /> 
-<outroom txID = "02"  outpersonId="0101002" outpersom="李四" domj="刘警官"  txroom="T-01" /> 
-</MQIIMPMoblie>

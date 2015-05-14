@@ -48,6 +48,7 @@ public class OutInfoList {
 									"outpersom");
 							info.police = parser
 									.getAttributeValue(null, "domj");
+							info.jsh = parser.getAttributeValue(null, "jsh");
 							/*
 							 * info.type = parser.getAttributeValue(null,
 							 * "outtype");

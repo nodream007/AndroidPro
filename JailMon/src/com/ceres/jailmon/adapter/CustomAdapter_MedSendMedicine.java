@@ -342,8 +342,8 @@ public class CustomAdapter_MedSendMedicine extends BaseAdapter {
 		if(sendMedicineData != null && sendMedicineData.getMedInstruction() != "") {
 			((EditText)dialog.findViewById(R.id.send_med_instruction)).setText(sendMedicineData.getMedInstruction());
 		}
-		if(sendMedicineData != null && sendMedicineData.getMedInstruction() != "") {
-			((EditText)dialog.findViewById(R.id.send_med_instruction)).setText(sendMedicineData.getMedInstruction());
+		if(sendMedicineData != null && sendMedicineData.getMedRemark() != "") {
+			((EditText)dialog.findViewById(R.id.send_med_remark)).setText(sendMedicineData.getMedRemark());
 		}
 		Window dialogWindow = dialog.getWindow();
 		LayoutParams lp = new LayoutParams();

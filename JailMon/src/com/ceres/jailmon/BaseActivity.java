@@ -598,13 +598,13 @@ public class BaseActivity extends Activity {
 	protected void onReceiveMedinfoPostResult(MedcineResult ret) {
 	}
 
-	public void getOutInfoList(final Handler handler, final String cid) {
+	public void getOutInfoList(final Handler handler, final String name) {
 		new Thread() {
 			public void run() {
 				Message msg = new Message();
 
 				try {
-					OutInfoList infolist = m_AppContext.getOutInfoList(cid);
+					OutInfoList infolist = m_AppContext.getOutInfoList(name);
 					msg.what = API_GET_OUT_INFO_LIST_OK;
 					msg.obj = infolist;
 				} catch (AppException e) {

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MQIIMPMoblie>
+
+    <patientInfo
+        jsh="101"
+        PerID="1001"
+        xm="张三"
+        ApplyTime="2015/2/1 10:00:00"
+        MedicalTime="2015/2/2 22:22:22"
+        IllNessExp="患有心脏病"
+        IllNessType="严重"
+        OutExplain="病情严重"
+        DoctorName="李四"
+        LeadName="无"
+        LeadTime="2015/2/2 10:00:00"
+        LeadOpinion="无"
+        Remark="尽快治疗" />
+
+</MQIIMPMoblie>

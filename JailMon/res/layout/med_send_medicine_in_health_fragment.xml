@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="检查日期："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/send_med_in_healthy_time_text"
+            android:gravity="center"
+            android:text="2015-4-28"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/send_med_in_healthy_time"
+            android:text="健康状况："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/send_med_in_healthy_type_text"
+            android:gravity="center"
+            android:text="健康"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/send_med_in_healthy_type_text"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:layout_marginRight="@dimen/content_margin"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/list_divider_long" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_height_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/send_med_in_healthy_time_text"
+            android:layout_below="@id/send_med_in_healthy_time_text"
+            android:layout_marginTop="15dp"
+            android:text="身高："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_height_text"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/send_med_in_healthy_height_text"
+            android:text="175"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_weight_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_height_text"
+            android:layout_alignRight="@id/send_med_in_healthy_type_text"
+            android:layout_below="@id/send_med_in_healthy_type_text"
+            android:layout_marginTop="15dp"
+            android:text="体重："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_height_text"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/send_med_in_healthy_weight_text"
+            android:text="60kg"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_blood_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/send_med_in_healthy_height_text"
+            android:layout_below="@id/send_med_in_healthy_height_text"
+            android:layout_marginTop="10dp"
+            android:text="血型："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_blood_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_blood_type_text"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/send_med_in_healthy_blood_type_text"
+            android:text="AB"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_blood_pre_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_blood_type_text"
+            android:layout_alignRight="@id/send_med_in_healthy_weight_text"
+            android:layout_below="@id/send_med_in_healthy_weight_text"
+            android:text="血压："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_blood_pre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_blood_type_text"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/send_med_in_healthy_blood_pre_text"
+            android:text="100-100"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_police_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/send_med_in_healthy_blood_type_text"
+            android:layout_below="@id/send_med_in_healthy_blood_type_text"
+            android:layout_marginTop="10dp"
+            android:text="检查人："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_police_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_police_name_text"
+            android:layout_toRightOf="@id/send_med_in_healthy_police_name_text"
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/send_med_in_healthy_police_name"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:layout_marginRight="@dimen/content_margin"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/list_divider_long" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_my_his_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/send_med_in_healthy_police_name_text"
+            android:layout_below="@id/send_med_in_healthy_police_name_text"
+            android:layout_marginTop="15dp"
+            android:text="本人病史："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_my_his"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_my_his_text"
+            android:layout_toRightOf="@id/send_med_in_healthy_my_his_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="60dp"
+            android:maxLines="4"
+            android:text="无"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_family_his_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/send_med_in_healthy_my_his_text"
+            android:layout_below="@id/send_med_in_healthy_my_his_text"
+            android:layout_marginTop="10dp"
+            android:text="家属病史："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_family_his"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_family_his_text"
+            android:layout_toRightOf="@id/send_med_in_healthy_family_his_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="60dp"
+            android:maxLines="4"
+            android:text="无"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_doctor_sug_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/send_med_in_healthy_family_his_text"
+            android:layout_below="@id/send_med_in_healthy_family_his_text"
+            android:layout_marginTop="10dp"
+            android:text="医生意见："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_doctor_sug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_doctor_sug_text"
+            android:layout_toRightOf="@id/send_med_in_healthy_doctor_sug_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="60dp"
+            android:maxLines="4"
+            android:text="无"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_remark_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/send_med_in_healthy_doctor_sug_text"
+            android:layout_below="@id/send_med_in_healthy_doctor_sug_text"
+            android:layout_marginTop="10dp"
+            android:text="备注："
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+
+        <TextView
+            android:id="@+id/send_med_in_healthy_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/send_med_in_healthy_remark_text"
+            android:layout_toRightOf="@id/send_med_in_healthy_remark_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="60dp"
+            android:maxLines="4"
+            android:text="无"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/middle_text_size" />
+    </RelativeLayout>
+
+</ScrollView>
