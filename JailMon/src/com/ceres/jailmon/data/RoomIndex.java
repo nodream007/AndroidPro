@@ -14,11 +14,11 @@ public class RoomIndex {
 	private List<Police> policeList;
 
 	private MajorSecurity majorSecurity;
-	private List<IndexDuty> dutyList;
+	private List<IndexDuty> dutyList;/*
 	private List<DisciplineWarning> disciplineWarningList;
 	private List<DoctorWarning> doctorWarningList;
 	private List<CustodyWarning> custodyWarningList;
-	private List<SpecialWarning> specialWarningList;
+	private List<SpecialWarning> specialWarningList;*/
 	private List<Warning> warningList;
 
 	public List<Warning> getWarningList() {
@@ -53,7 +53,7 @@ public class RoomIndex {
 		this.dutyList = dutyList;
 	}
 
-	public List<DisciplineWarning> getDisciplineWarningList() {
+	/*public List<DisciplineWarning> getDisciplineWarningList() {
 		return disciplineWarningList;
 	}
 
@@ -84,7 +84,7 @@ public class RoomIndex {
 
 	public void setSpecialWarningList(List<SpecialWarning> specialWarningList) {
 		this.specialWarningList = specialWarningList;
-	}
+	}*/
 
 	public String getId() {
 		return id;

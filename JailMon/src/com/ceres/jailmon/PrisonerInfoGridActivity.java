@@ -69,6 +69,7 @@ public class PrisonerInfoGridActivity extends BaseActivity {
 	private ListView m_lstBreakRule, m_lstTradeInfo;
 	CustomAdapter_PrisonerXPhoto m_adpter_grid_prisoner = null;
 	CustomAdapter_PolicePhoto m_adpter_grid_police = null;
+	private String mCellType;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,7 @@ public class PrisonerInfoGridActivity extends BaseActivity {
 
 				if (m_celllist != null) {
 					m_cell = m_celllist.getCell(arg2);
+					mCellType = m_cell.getM_strType();
 					loadPrisoners(m_cell);
 				}
 			}
@@ -240,7 +242,8 @@ public class PrisonerInfoGridActivity extends BaseActivity {
 
 			// Set TextView content
 
-			String strSum = "监室类型：少年犯      "+ getString(R.string.cell_prisoners)
+			String strSum = "监室类型：" + mCellType + "  "
+					+ getString(R.string.cell_prisoners)
 					+ Integer.toString(nTotal) + " / "
 					+ getString(R.string.vip_prisoners)
 					+ Integer.toString(nVIP);

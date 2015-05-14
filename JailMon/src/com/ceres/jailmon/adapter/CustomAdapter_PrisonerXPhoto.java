@@ -62,7 +62,8 @@ public class CustomAdapter_PrisonerXPhoto extends BaseAdapter {
 
 			if (info.getVIP())
 				listItemView.textName.setTextColor(Color.RED);
-
+			else
+				listItemView.textName.setTextColor(Color.WHITE);
 			Bitmap bmpPhoto = info.getPhoto();
 			if (bmpPhoto != null)
 				listItemView.imgPhoto.setImageBitmap(bmpPhoto);

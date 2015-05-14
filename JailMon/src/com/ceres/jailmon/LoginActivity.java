@@ -50,6 +50,7 @@ public class LoginActivity extends BaseActivity {
 		boolean onoff;
 		String user;
 		String passwd;
+		String root;
 	}
 
 	LoginInfo m_logininfo = new LoginInfo();
@@ -121,7 +122,7 @@ public class LoginActivity extends BaseActivity {
 				//just for test 
 				/*m_layoutReg.setVisibility(View.GONE);
 				m_layoutLogin.setVisibility(View.VISIBLE);*/
-				EnterMainMenu();
+				//EnterMainMenu();
 			}
 		});
 
@@ -139,8 +140,9 @@ public class LoginActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View arg0) {
-
-				EnterMainMenu();
+				//test
+				EnterMainMenu("");
+				//Login();
 			}
 		});
 
@@ -199,7 +201,6 @@ public class LoginActivity extends BaseActivity {
 				getSetting().saveServer();
 			}
 		}
-
 		if (m_logininfo.onoff)
 			SaveLoginInfo(m_logininfo);
 		else
@@ -211,18 +212,33 @@ public class LoginActivity extends BaseActivity {
 		getAuthResult(m_basehandler, m_logininfo.user, m_logininfo.passwd);
 	}
 
-	protected void onReceiveAuthResult(AuthResult ret) {
+	protected void onReceiveAuthResult(StringResult ret) {
 		m_progressLogin.setVisibility(View.GONE);
 		m_buttonLogin.setEnabled(true);
-
-		AuthResult result = ret;
-
-		if (result.m_bOK)
-			EnterMainMenu();
-		else
-			ShowError(R.string.passwd_wrong);
+		String result = "";
+		if(ret != null){
+			result = ret.getM_bOK();
+		}
+		String[] resultArray = null;
+		String resultFlag = "";
+		String resultContent = "";
+		if (result.contains("|")) {
+			resultArray = result.trim().split("\\|");
+			if (resultArray != null) {
+				resultFlag = resultArray[0];
+				if (resultArray.length >= 2) {
+					resultContent = resultArray[1];
+				}
+			}
+		}
+		if ("true".equals(resultFlag))
+			EnterMainMenu(resultContent);
+		else{
+			Toast.makeText(this, resultContent, Toast.LENGTH_SHORT).show();
+		}
 	}
-
+	
+	
 	@Override
 	protected void onReceiveFail(AppException exception) {
 		m_progressLogin.setVisibility(View.GONE);
@@ -230,9 +246,19 @@ public class LoginActivity extends BaseActivity {
 
 		super.onReceiveFail(exception);
 	}
+	
+	private String[] splitRoot(String resultContent){
+		String[] contentArray = null;
+		String resultFlag = "";
+		if (resultContent.contains(",")) {
+			contentArray = resultContent.trim().split(",");
+		}
+		return contentArray;
+	}
 
-	private void EnterMainMenu() {
+	private void EnterMainMenu(String root) {
 		Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+		intent.putExtra("root", root);
 		startActivity(intent);
 		finish();
 	}
@@ -269,9 +295,7 @@ public class LoginActivity extends BaseActivity {
 	private boolean LoadLoginInfo(LoginInfo info) {
 		if (info == null)
 			return false;
-
 		SharedPreferences sp = getPreferences(0);
-
 		info.user = sp.getString("USER", "admin");
 		info.passwd = sp.getString("PASS", "12345");
 		info.onoff = sp.getBoolean("ON", false);

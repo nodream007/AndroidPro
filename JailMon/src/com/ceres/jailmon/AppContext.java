@@ -62,6 +62,7 @@ import com.ceres.jailmon.data.SendMedicineData;
 import com.ceres.jailmon.data.ServerTime;
 import com.ceres.jailmon.data.ShiftInfoList;
 import com.ceres.jailmon.data.SignInResult;
+import com.ceres.jailmon.data.StringResult;
 import com.ceres.jailmon.data.TXResult;
 import com.ceres.jailmon.data.TotalPrisonSituationList;
 import com.ceres.jailmon.data.TradeInfoList;
@@ -135,10 +136,10 @@ public class AppContext extends Application {
 		return info;
 	}
 
-	public AuthResult getAuthResult(String user, String passwd)
+	public StringResult getAuthResult(String user, String passwd)
 			throws AppException {
 
-		AuthResult info = null;
+		StringResult info = null;
 
 		try {
 			checkNetworkConnected();
@@ -148,7 +149,7 @@ public class AppContext extends Application {
 		}
 
 		if (info == null) {
-			info = new AuthResult();
+			info = new StringResult();
 		}
 
 		return info;

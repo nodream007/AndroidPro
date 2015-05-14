@@ -10,13 +10,14 @@ package com.ceres.jailmon.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ceres.jailmon.CustomerListView;
 import com.ceres.jailmon.R;
 import com.ceres.jailmon.data.BaseWarning;
 import com.ceres.jailmon.data.Warning;
@@ -26,7 +27,7 @@ public class CustomAdapter_index extends BaseAdapter {
 
 	static class ListItemView {
 		public TextView warningTypeText;
-		public CustomerListView warningTypeList;
+		public ListView warningTypeList;
 	};
 
 	protected LayoutInflater listContainer;
@@ -42,12 +43,13 @@ public class CustomAdapter_index extends BaseAdapter {
 
 	@Override
 	public int getCount() {
+		Log.d("jiayy","count = "+items.size());
 		return items.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return position;
+		return items.get(position);
 	}
 
 	@Override
@@ -67,7 +69,7 @@ public class CustomAdapter_index extends BaseAdapter {
 
 			listItemView.warningTypeText = (TextView) convertView
 					.findViewById(R.id.waring_type);
-			listItemView.warningTypeList = (CustomerListView) convertView
+			listItemView.warningTypeList = (ListView) convertView
 					.findViewById(R.id.warning_list_list);
 			convertView.setTag(listItemView);
 		} else {

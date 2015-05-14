@@ -54,10 +54,10 @@ import com.ceres.jailmon.data.RuleBreakItemsList;
 import com.ceres.jailmon.data.RuleBreakResult;
 import com.ceres.jailmon.data.SecurityInfoList;
 import com.ceres.jailmon.data.SendMedicineData;
-import com.ceres.jailmon.data.SendMedicineResult;
 import com.ceres.jailmon.data.ServerTime;
 import com.ceres.jailmon.data.ShiftInfoList;
 import com.ceres.jailmon.data.SignInResult;
+import com.ceres.jailmon.data.StringResult;
 import com.ceres.jailmon.data.TotalPrisonSituationList;
 import com.ceres.jailmon.data.TradeInfoList;
 import com.ceres.jailmon.data.TrainingList;
@@ -382,7 +382,7 @@ public class BaseFragmentActivity extends FragmentActivity {
 				Message msg = new Message();
 
 				try {
-					AuthResult info = m_AppContext.getAuthResult(user, passwd);
+					StringResult info = m_AppContext.getAuthResult(user, passwd);
 					msg.what = API_GET_AUTH_RESULT_OK;
 					msg.obj = info;
 				} catch (AppException e) {

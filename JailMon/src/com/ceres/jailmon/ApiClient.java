@@ -82,6 +82,7 @@ import com.ceres.jailmon.data.SendMedicineData;
 import com.ceres.jailmon.data.ServerTime;
 import com.ceres.jailmon.data.ShiftInfoList;
 import com.ceres.jailmon.data.SignInResult;
+import com.ceres.jailmon.data.StringResult;
 import com.ceres.jailmon.data.TXResult;
 import com.ceres.jailmon.data.TotalPrisonSituationList;
 import com.ceres.jailmon.data.TradeInfoList;
@@ -93,6 +94,8 @@ public class ApiClient {
 	public static final String UNIT_ID = "43068111";
 
 	public static final String API_LOGIN = "/VerificationUse.aspx?usr=%s&pass=%s";
+	
+	public static final String API_LOGIN_NEW = "/login.aspx?username=%s&pwd=%s";
 
 	public static final String API_SIGNIN = "/signin.aspx?id=%s";
 
@@ -206,6 +209,7 @@ public class ApiClient {
 	static final String[][] LOCAL_TABLE = { { "getjsnum", "getjsnum.xml" },
 			{ "getpersonsbyroom", "getpersonsbyroom.xml" },
 			{ "VerificationUse", "VerificationUse.xml" },
+			{"login","getloginresult.xml"},
 			{ "getbasepersoninfobyid", "getbasepersoninfobyid.xml" },
 			{ "getallsafetydefenseinfo", "getallsafetydefenseinfo.xml" },
 			{ "getmedicinfo", "getmedicinfo.xml" },
@@ -256,13 +260,6 @@ public class ApiClient {
 			{ "gethealthyinfo", "gethealthyinfo.xml" },
 			{ "getmedOuthistory", "getmedhistoryout.xml" }};
 
-	public AppContext m_application;
-
-	public ApiClient(AppContext app) {
-		m_application = app;
-
-	}
-
 	static String getDemoXMLFile(String url) {
 		for (int i = 0; i < LOCAL_TABLE.length; i++) {
 			if (url.contains(LOCAL_TABLE[i][0]))
@@ -270,6 +267,13 @@ public class ApiClient {
 		}
 	
 		return null;
+	}
+
+	public AppContext m_application;
+
+	public ApiClient(AppContext app) {
+		m_application = app;
+
 	}
 
 	public String getAPIUrl(String url) {
@@ -289,17 +293,20 @@ public class ApiClient {
 			return "http://" + server + /* "/JailMon" + */url;
 	}
 
-	public AuthResult getAuthResult(String user, String passwd)
+	public StringResult getAuthResult(String user, String passwd)
 			throws AppException {
-		String url = String.format(getAPIUrl(API_LOGIN), user, passwd);
+		String url = String.format(getAPIUrl(API_LOGIN_NEW), user, passwd);
 
-		AuthResult info = null;
+		StringResult info = null;
 
 		try {
 			InputStream is = requestHttpGet(url);
-
+			info = new StringResult();
 			if (is != null) {
-				info = AuthResult.parse(is);
+				String result = inputStream2String(is);
+				if (!TextUtils.isEmpty(result)) {
+					info.setM_bOK(result);
+				}
 				is.close();
 			}
 		}
@@ -1655,7 +1662,7 @@ public class ApiClient {
 
 	public List<RoomIndex> getIndexData(String deviceId) throws AppException {
 
-		String url = String.format(getAPIUrl(API_GET_PATROL_HISTORY), deviceId);
+		String url = String.format(getAPIUrl(API_GET_INDEX), deviceId);
 
 		List<RoomIndex> roomIndexList = null;
 

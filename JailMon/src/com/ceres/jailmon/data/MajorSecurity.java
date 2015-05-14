@@ -13,14 +13,14 @@ public class MajorSecurity {
 		this.num = num;
 	}
 
-	public List<IndexOutPrisoner> getOurPrisoner() {
+	public List<IndexMajorSecurity> getOurPrisoner() {
 		return ourPrisoner;
 	}
 
-	public void setOurPrisoner(List<IndexOutPrisoner> ourPrisoner) {
+	public void setOurPrisoner(List<IndexMajorSecurity> ourPrisoner) {
 		this.ourPrisoner = ourPrisoner;
 	}
 
-	private List<IndexOutPrisoner> ourPrisoner;
+	private List<IndexMajorSecurity> ourPrisoner;
 
 }

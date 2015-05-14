@@ -13,7 +13,13 @@ public class Cell {
 		m_strManager = manager;
 		m_strPoliceName = jname;
 	}
-	
+	public String getM_strType() {
+		return m_strType;
+	}
+
+	public void setM_strType(String m_strType) {
+		this.m_strType = m_strType;
+	}
 	public String getID()
 	{
 		return m_strID;

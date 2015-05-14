@@ -34,6 +34,7 @@ import com.ceres.jailmon.data.CellList;
 import com.ceres.jailmon.data.CommonResult;
 import com.ceres.jailmon.data.DutyInfoList;
 import com.ceres.jailmon.data.GoodsList;
+import com.ceres.jailmon.data.IndexMajorSecurity;
 import com.ceres.jailmon.data.MapInfo;
 import com.ceres.jailmon.data.MapLocationList;
 import com.ceres.jailmon.data.MedcineInfoList;
@@ -58,6 +59,7 @@ import com.ceres.jailmon.data.SecurityInfoList;
 import com.ceres.jailmon.data.ServerTime;
 import com.ceres.jailmon.data.ShiftInfoList;
 import com.ceres.jailmon.data.SignInResult;
+import com.ceres.jailmon.data.StringResult;
 import com.ceres.jailmon.data.TXResult;
 import com.ceres.jailmon.data.TotalPrisonSituationList;
 import com.ceres.jailmon.data.TradeInfoList;
@@ -107,6 +109,7 @@ public class BaseActivity extends Activity {
 	final static int API_GET_PATROL_HISTORY_OK = 1005;
 	final static int API_POST_PATROL_OK = 1006;
 	final static int API_GET_INDEX_DATA_OK = 1007;
+	final static int API_GET_ALL_MAJOR_SECURITY_PHOTO_OK = 1008;
 	final static int API_GET_FAIL = -1;
 
 	protected AppContext m_AppContext = null;
@@ -166,7 +169,7 @@ public class BaseActivity extends Activity {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case API_GET_AUTH_RESULT_OK:
-				onReceiveAuthResult((AuthResult) msg.obj);
+				onReceiveAuthResult((StringResult) msg.obj);
 				break;
 
 			case API_GET_CELLLIST_OK:
@@ -280,6 +283,10 @@ public class BaseActivity extends Activity {
 			case API_GET_ALL_PRISONER_PHOTO_OK:
 				onReceiveAllPrisonerPhotoNotify();
 				break;
+			
+			case API_GET_ALL_MAJOR_SECURITY_PHOTO_OK:
+				onReceiveMajorSecurityPhotoNotify();
+				break;
 
 			case API_GET_ALL_POLICE_PHOTO_OK:
 				onReceiveAllPolicePhotoNotify();
@@ -332,6 +339,10 @@ public class BaseActivity extends Activity {
 		
 	}
 	
+	protected void onReceiveMajorSecurityPhotoNotify(){
+		
+	}
+	
 	protected void onReceiveFail(AppException exception) {
 		closeProcessDialog();
 		exception.makeToast(BaseActivity.this);
@@ -345,7 +356,7 @@ public class BaseActivity extends Activity {
 				Message msg = new Message();
 
 				try {
-					AuthResult info = m_AppContext.getAuthResult(user, passwd);
+					StringResult info = m_AppContext.getAuthResult(user, passwd);
 					msg.what = API_GET_AUTH_RESULT_OK;
 					msg.obj = info;
 				} catch (AppException e) {
@@ -358,7 +369,7 @@ public class BaseActivity extends Activity {
 		}.start();
 	}
 
-	protected void onReceiveAuthResult(AuthResult ret) {
+	protected void onReceiveAuthResult(StringResult ret) {
 
 	}
 
@@ -1113,6 +1124,33 @@ public class BaseActivity extends Activity {
 	}
 	
 	
+	public void getAllMajorSecurityPhoto(final Handler handler,
+			final List<IndexMajorSecurity> infolist) {
+		new Thread() {
+			public void run() {
+				if (infolist == null)
+					return;
+
+				IndexMajorSecurity info;
+
+				for (int i = 0; i < infolist.size(); i++) {
+					info = infolist.get(i);
+
+					if (info.getId() != null) {
+						try {
+							info.setBmp(m_AppContext.getPrisonerPhoto(info
+									.getId()));
+							Message msg = new Message();
+							msg.what = API_GET_ALL_MAJOR_SECURITY_PHOTO_OK;
+							handler.sendMessage(msg);
+						} catch (AppException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}.start();
+	}
 	
 
 	protected void onReceiveAllPrisonerPhotoNotify() {
