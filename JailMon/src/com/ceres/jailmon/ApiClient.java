@@ -95,7 +95,9 @@ public class ApiClient {
 
 	public static final String API_LOGIN = "/VerificationUse.aspx?usr=%s&pass=%s";
 	
-	public static final String API_LOGIN_NEW = "/login.aspx?username=%s&pwd=%s";
+	public static final String API_LOGIN_NEW = "/login.aspx?username=%s&pwd=%s&macaddr=%s&ip=%s";
+	
+	public static final String API_IP_CHANGE = "/IPChange.aspx?username=%s&ip=%s&macaddr=%s";
 
 	public static final String API_SIGNIN = "/signin.aspx?id=%s";
 
@@ -275,7 +277,10 @@ public class ApiClient {
 		m_application = app;
 
 	}
-
+	
+	public ApiClient() {
+		
+	}
 	public String getAPIUrl(String url) {
 
 		String server = m_application.m_setting.getServer();
@@ -293,9 +298,42 @@ public class ApiClient {
 			return "http://" + server + /* "/JailMon" + */url;
 	}
 
-	public StringResult getAuthResult(String user, String passwd)
+	public StringResult getAuthResult(String user, String passwd, String macaddr, String ip)
 			throws AppException {
-		String url = String.format(getAPIUrl(API_LOGIN_NEW), user, passwd);
+		String url = String.format(getAPIUrl(API_LOGIN_NEW), user, passwd, macaddr, ip);
+
+		StringResult info = null;
+
+		try {
+			InputStream is = requestHttpGet(url);
+			info = new StringResult();
+			if (is != null) {
+				String result = inputStream2String(is);
+				if (!TextUtils.isEmpty(result)) {
+					info.setM_bOK(result);
+				}
+				is.close();
+			}
+		}
+
+		catch (AppException e) {
+			throw e;
+		} catch (IOException e) {
+			throw AppException.http(e);
+		}
+
+		return info;
+	}
+	/**
+	 * IP变化后向云端传输新IP
+	 * @param user
+	 * @param ip
+	 * @return
+	 * @throws AppException
+	 */
+	public StringResult getIPChangeResult(String user, String ip, String macaddr)
+			throws AppException {
+		String url = String.format(getAPIUrl(API_IP_CHANGE), user, ip, macaddr);
 
 		StringResult info = null;
 

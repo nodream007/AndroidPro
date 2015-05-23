@@ -2,7 +2,8 @@
 <resources>  
   <drawable name="content">#FFFFFFFF</drawable>  
   <color name="translucent_background">#7f000000</color>
-  <color name="white">#ffffff</color><!--白色 -->  
+  <color name="white">#ffffff</color><!--白色 -->
+  <color name="blue">#28a0b3</color><!--青蓝 -->    
   <color name="gray_bg">#dbdbd9</color>
   <color name="total_ill_type_color">#00dcff</color>
   <color name="red">#ff0000</color>

@@ -15,6 +15,7 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
@@ -68,6 +69,7 @@ import com.ceres.jailmon.data.TotalPrisonSituationList;
 import com.ceres.jailmon.data.TradeInfoList;
 import com.ceres.jailmon.data.TrainingList;
 import com.ceres.jailmon.data.TrainingResult;
+import com.ceres.jailmon.service.ArraignmentService;
 import com.ceres.jailmon.util.IpUtil;
 public class AppContext extends Application {
 	
@@ -84,7 +86,10 @@ public class AppContext extends Application {
 		m_setting = new SettingData(this);
 		m_setting.loadServer();
 		m_setting.loadID();
-		super.onCreate(); 
+		super.onCreate();
+		// 启动提讯通知服务
+		Intent intent= new Intent(this,ArraignmentService.class);
+		startService(intent);
 	}
 	
 	public void setMonitorType( int type )
@@ -136,14 +141,14 @@ public class AppContext extends Application {
 		return info;
 	}
 
-	public StringResult getAuthResult(String user, String passwd)
+	public StringResult getAuthResult(String user, String passwd, String macaddr, String ip)
 			throws AppException {
 
 		StringResult info = null;
 
 		try {
 			checkNetworkConnected();
-			info = m_apiclient.getAuthResult(user, passwd);
+			info = m_apiclient.getAuthResult(user, passwd, macaddr, ip);
 		} catch (AppException e) {
 			throw e;
 		}

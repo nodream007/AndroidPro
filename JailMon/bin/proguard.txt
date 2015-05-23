@@ -1,88 +1,94 @@
-# view AndroidManifest.xml #generated:16
+# view AndroidManifest.xml #generated:17
 -keep class com.ceres.jailmon.AppContext { <init>(...); }
 
-# view AndroidManifest.xml #generated:219
+# view AndroidManifest.xml #generated:222
 -keep class com.ceres.jailmon.BootBroadcastReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:168
+# view AndroidManifest.xml #generated:171
 -keep class com.ceres.jailmon.CallingActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:48
+# view AndroidManifest.xml #generated:51
 -keep class com.ceres.jailmon.IndexActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:161
+# view AndroidManifest.xml #generated:164
 -keep class com.ceres.jailmon.LearningActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:34
+# view AndroidManifest.xml #generated:38
 -keep class com.ceres.jailmon.LoginActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:22
+# view AndroidManifest.xml #generated:23
 -keep class com.ceres.jailmon.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:90
+# view AndroidManifest.xml #generated:93
 -keep class com.ceres.jailmon.MedicineActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:126
+# view AndroidManifest.xml #generated:129
 -keep class com.ceres.jailmon.MonitorActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:190
+# view AndroidManifest.xml #generated:193
 -keep class com.ceres.jailmon.MonitorCommonActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:133
+# view AndroidManifest.xml #generated:136
 -keep class com.ceres.jailmon.MonitorDHActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:197
+# view AndroidManifest.xml #generated:200
 -keep class com.ceres.jailmon.MyNetSDKPlayerActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:182
+# view AndroidManifest.xml #generated:227
+-keep class com.ceres.jailmon.NetworkConnectChangedReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:185
 -keep class com.ceres.jailmon.NoteActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:140
+# view AndroidManifest.xml #generated:143
 -keep class com.ceres.jailmon.OutInfoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:119
+# view AndroidManifest.xml #generated:122
 -keep class com.ceres.jailmon.PatrolMapActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:147
+# view AndroidManifest.xml #generated:150
 -keep class com.ceres.jailmon.PowerInfoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:62
+# view AndroidManifest.xml #generated:65
 -keep class com.ceres.jailmon.PrisonerInfoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:69
+# view AndroidManifest.xml #generated:72
 -keep class com.ceres.jailmon.PrisonerInfoGridActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:97
+# view AndroidManifest.xml #generated:100
 -keep class com.ceres.jailmon.PurchaseActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:211
+# view AndroidManifest.xml #generated:214
 -keep class com.ceres.jailmon.RecordActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:76
+# view AndroidManifest.xml #generated:79
 -keep class com.ceres.jailmon.SecurityActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:83
+# view AndroidManifest.xml #generated:86
 -keep class com.ceres.jailmon.SecurityRBActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:206
+# view AndroidManifest.xml #generated:209
 -keep class com.ceres.jailmon.SendMedicineActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:104
+# view AndroidManifest.xml #generated:107
 -keep class com.ceres.jailmon.SettingActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:154
+# view AndroidManifest.xml #generated:157
 -keep class com.ceres.jailmon.ShiftInfoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:112
+# view AndroidManifest.xml #generated:115
 -keep class com.ceres.jailmon.TestActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:204
+# view AndroidManifest.xml #generated:207
 -keep class com.ceres.jailmon.TestActivity1 { <init>(...); }
 
-# view AndroidManifest.xml #generated:175
+# view AndroidManifest.xml #generated:178
 -keep class com.ceres.jailmon.ThreeFixedTabActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:225
+# view res/layout/monitor.xml #generated:216
+-keep class com.ceres.jailmon.component.TimeBar { <init>(...); }
+
+# view AndroidManifest.xml #generated:235
 -keep class com.ceres.jailmon.service.ArraignmentService { <init>(...); }
 
 # view res/layout/dhtest.xml #generated:126

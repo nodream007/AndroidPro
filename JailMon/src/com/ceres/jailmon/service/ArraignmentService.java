@@ -70,7 +70,7 @@ public class ArraignmentService extends Service {
 
 	@Override
 	public void onCreate() {
-		Log.i(TAG, "onCreate");
+		Log.i(TAG, "ArraignmentService onCreate");
 		super.onCreate();
 		mNotifiManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		ReceiveServerSocketData();
@@ -130,6 +130,8 @@ public class ArraignmentService extends Service {
 				R.drawable.stat_sys_call_record, receive,
 				System.currentTimeMillis());
 		notification.flags = Notification.FLAG_AUTO_CANCEL;
+		notification.defaults = Notification.DEFAULT_SOUND
+				| Notification.DEFAULT_VIBRATE;
 		Intent i = new Intent(ArraignmentService.this, OutInfoActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 				| Intent.FLAG_ACTIVITY_NEW_TASK);

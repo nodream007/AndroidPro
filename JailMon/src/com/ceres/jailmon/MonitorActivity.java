@@ -7,7 +7,11 @@
  */
 package com.ceres.jailmon;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.MediaPlayer.PlayM4.Player;
+import org.MediaPlayer.PlayM4.Player.MPSystemTime;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,18 +20,21 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.SurfaceHolder.Callback;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.ceres.jailmon.adapter.CustomAdapter_MonitorInfo;
+import com.ceres.jailmon.component.TimeBar;
+import com.ceres.jailmon.component.TimeBar.TimePickedCallBack;
 import com.ceres.jailmon.data.MonitorInfo;
 import com.ceres.jailmon.data.MonitorInfoList;
 import com.hikvision.netsdk.ExceptionCallBack;
@@ -36,16 +43,43 @@ import com.hikvision.netsdk.NET_DVR_CLIENTINFO;
 import com.hikvision.netsdk.NET_DVR_DEVICEINFO_V30;
 import com.hikvision.netsdk.NET_DVR_IPPARACFG_V40;
 import com.hikvision.netsdk.NET_DVR_NETCFG_V30;
+import com.hikvision.netsdk.NET_DVR_PLAYBACK_INFO;
+import com.hikvision.netsdk.NET_DVR_TIME;
 import com.hikvision.netsdk.PlaybackCallBack;
+import com.hikvision.netsdk.PlaybackControlCommand;
 import com.hikvision.netsdk.RealPlayCallBack;
 
-public class MonitorActivity extends BaseActivity implements Callback {
+public class MonitorActivity extends BaseActivity implements Callback,
+		OnClickListener {
+
+	private final String TAG = "JAILMON";
 
 	final static int LOGIN_MONITOR_UPDATE = 100;
+	
+	final static int UPDATE_TIME_BAR = 99;
 
 	private ListView m_listViewMonitors;
 	private LinearLayout m_layoutMain, m_layoutContent;
 	private AnimationUtil m_aniset;
+
+	// 悬浮组件部分
+	private LinearLayout m_realPlaySuspension;
+	private TextView m_playBack;
+	private LinearLayout m_palyHDll;
+	private LinearLayout m_palySDll;
+	private TextView m_palyHD;
+	private TextView m_palyHDText;
+	private TextView m_palySD;
+	private TextView m_palySDText;
+
+	private LinearLayout m_playBackSuspension;
+	private TextView m_preview;
+	private TextView m_date;
+
+	private TimeBar timeBar;
+	private LinearLayout m_timeBar;
+	/** 时间回调函数 */
+	private TimePickedCallBack mTimePickCallback;
 
 	private Player m_oPlayerSDK = null;
 
@@ -56,16 +90,64 @@ public class MonitorActivity extends BaseActivity implements Callback {
 	private int m_iPlaybackID = -1; // return by NET_DVR_PlayBackByTime
 	private byte m_byGetFlag = 1; // 1-get net cfg, 0-set net cfg
 	private int m_iPort = -1; // play port
+	private int m_playMode;
+	private static final int m_playHD = 0; // 高清
+	private static final int m_playSD = 1; // 标清
 	private NET_DVR_NETCFG_V30 NetCfg = new NET_DVR_NETCFG_V30(); // netcfg
 																	// struct
 
+	private int m_PlayBackId = -1;
+	
 	private MonitorInfoList m_milist;
 
-	private final String TAG = "JAILMON";
+	private MonitorInfo m_nowMonitorInfo;
 
 	private SurfaceView m_osurfaceView = null;
 
 	private boolean bUpdate = false;
+
+	private CustomAdapter_MonitorInfo m_adapterMonitor;
+
+	private Handler m_handler = new Handler() {
+		public void handleMessage(Message msg) {
+			if (msg.what == API_GET_MONITOR_INFO_LIST_OK) {
+				m_milist = (MonitorInfoList) msg.obj;
+
+				if (m_milist != null) {
+					m_adapterMonitor = new CustomAdapter_MonitorInfo(
+							MonitorActivity.this, m_milist,
+							R.drawable.list_icon_monitor);
+
+					m_listViewMonitors.setAdapter(m_adapterMonitor);
+
+					m_layoutMain.startAnimation(m_aniset.m_aniFadeIn);
+					m_layoutContent.startAnimation(m_aniset.m_aniFadeIn);
+
+					loginAllMonitor(m_handler);
+				}
+			} else if (msg.what == API_GET_FAIL) {
+				closeProcessDialog();
+				AppException exception = (AppException) msg.obj;
+				exception.makeToast(MonitorActivity.this);
+			} else if (msg.what == LOGIN_MONITOR_UPDATE) {
+				if (m_adapterMonitor != null)
+					m_adapterMonitor.notifyDataSetChanged();
+			} else if (msg.what == UPDATE_TIME_BAR) {
+				MPSystemTime m = new MPSystemTime();
+				m = (MPSystemTime) msg.obj;
+				Calendar cal = Calendar.getInstance();
+				cal.set(Calendar.YEAR, m.year);
+				cal.set(Calendar.MONTH, m.month - 1);
+				cal.set(Calendar.DATE, m.day);
+				
+				cal.set(Calendar.HOUR_OF_DAY, m.hour);
+				cal.set(Calendar.MINUTE, m.min);
+				cal.set(Calendar.SECOND, m.sec);
+				
+				timeBar.reset(cal.getTime());
+			}
+		}
+	};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +162,134 @@ public class MonitorActivity extends BaseActivity implements Callback {
 
 		setContentView(R.layout.monitor);
 
+		initView();
+
+		loadMonitorInfo();
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		Log.i(TAG, "surface is created" + m_iPort);
+		if (-1 == m_iPort) {
+			return;
+		}
+		Surface surface = holder.getSurface();
+		if (null != m_oPlayerSDK && true == surface.isValid()) {
+			if (false == m_oPlayerSDK.setVideoWindow(m_iPort, 0, holder)) {
+				Log.e(TAG, "Player setVideoWindow failed!");
+			}
+		}
+	}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		Log.i(TAG, "Player setVideoWindow release!" + m_iPort);
+		if (-1 == m_iPort) {
+			return;
+		}
+		if (null != m_oPlayerSDK && true == holder.getSurface().isValid()) {
+			if (false == m_oPlayerSDK.setVideoWindow(m_iPort, 0, null)) {
+				Log.e(TAG, "Player setVideoWindow failed!");
+			}
+		}
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			int nCount;
+
+			if (m_milist == null || (nCount = m_milist.m_list.size()) == 0)
+				return false;
+
+			MonitorInfo mi;
+			boolean flag = true;
+			for (int i = 0; i < nCount; i++) {
+				mi = m_milist.m_list.get(i);
+				flag = flag && mi.available;
+			}
+			if (!flag) {
+				Toast.makeText(m_AppContext, "正在初始化监控设备，请稍后返回",
+						Toast.LENGTH_SHORT).show();
+			} else {
+				stopPlay();
+				Cleanup();
+				// android.os.Process.killProcess(android.os.Process.myPid());
+				finish();
+			}
+			return false;
+		default:
+			break;
+		}
+
+		return true;
+	}
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		m_handler.removeMessages(UPDATE_TIME_BAR);
+	}
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.monitor_playback_img:
+			stopPlay();
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DATE, -1);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MINUTE, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+			NET_DVR_TIME struBegin = new NET_DVR_TIME();
+			NET_DVR_TIME struEnd = new NET_DVR_TIME();
+			struBegin.dwYear = cal.get(Calendar.YEAR);    //获取年
+			struBegin.dwMonth = cal.get(Calendar.MONTH) + 1;
+			struBegin.dwDay = cal.get(Calendar.DAY_OF_MONTH);
+			struBegin.dwHour = cal.get(Calendar.HOUR);
+			struBegin.dwMinute = cal.get(Calendar.MINUTE);
+			struBegin.dwSecond = cal.get(Calendar.SECOND) + 1;
+
+			struEnd.dwYear = cal.get(Calendar.YEAR);
+			struEnd.dwMonth = cal.get(Calendar.MONTH) + 1;
+			struEnd.dwDay = cal.get(Calendar.DAY_OF_MONTH) + 1;
+			struEnd.dwHour = 23;
+			struEnd.dwMinute = 59;
+			struEnd.dwSecond = 59;
+			PlayBack("192.0.1.39", 8000, "admin", "12345", 3, struBegin, struEnd);
+			break;
+		case R.id.monitor_hd_ll:
+			stopPlay();
+			m_playMode = m_playHD;
+			preview(m_nowMonitorInfo, m_playHD);
+			break;
+		case R.id.monitor_sd_ll:
+			stopPlay();
+			m_playMode = m_playSD;
+			preview(m_nowMonitorInfo, m_playSD);
+			break;
+		case R.id.monitor_preview_img:
+			stopPlayBack();
+			m_playMode = m_playHD;
+			preview(m_nowMonitorInfo, m_playHD);
+			break;
+		case R.id.monitor_date_img:
+
+			break;
+		}
+
+	}
+
+	/**
+	 * 初始化页面
+	 */
+	private void initView() {
 		m_layoutMain = (LinearLayout) findViewById(R.id.layoutMain);
 		m_layoutContent = (LinearLayout) findViewById(R.id.layoutContent);
 
@@ -109,6 +319,7 @@ public class MonitorActivity extends BaseActivity implements Callback {
 							Toast.LENGTH_SHORT).show();
 				} else {
 					stopPlay();
+					stopPlayBack();
 					Cleanup();
 					finish();
 				}
@@ -127,11 +338,13 @@ public class MonitorActivity extends BaseActivity implements Callback {
 				int sel = (int) arg2;
 
 				MonitorInfo mi = m_milist.m_list.get(sel);
-
+				m_nowMonitorInfo = mi;
 				if (mi.available) {
-					stop();
-					preview(mi);
+					stopPlay();
+					m_playMode = m_playHD;
+					preview(mi, m_playHD);
 				}
+				m_adapterMonitor.setPosition(arg2);
 			}
 
 		});
@@ -139,112 +352,57 @@ public class MonitorActivity extends BaseActivity implements Callback {
 		m_osurfaceView = (SurfaceView) findViewById(R.id.Sur_Player1);
 		m_osurfaceView.getHolder().addCallback(this);
 
-		loadMonitorInfo();
-	}
+		// 实时预览界面右上方悬浮组件
+		m_realPlaySuspension = (LinearLayout) findViewById(R.id.monitor_realpaly_suspension);
+		m_playBack = (TextView) findViewById(R.id.monitor_playback_img);
+		m_playBack.setOnClickListener(this);
+		m_palyHDll = (LinearLayout) findViewById(R.id.monitor_hd_ll);
+		m_palyHDll.setOnClickListener(this);
+		m_palySDll = (LinearLayout) findViewById(R.id.monitor_sd_ll);
+		m_palySDll.setOnClickListener(this);
+		m_palyHD = (TextView) findViewById(R.id.monitor_hd_img);
+		m_palyHDText = (TextView) findViewById(R.id.monitor_hd_text);
+		m_palySD = (TextView) findViewById(R.id.monitor_sd_img);
+		m_palySDText = (TextView) findViewById(R.id.monitor_sd_text);
 
-	// @Override
-	public void surfaceCreated(SurfaceHolder holder) {
-		Log.i(TAG, "surface is created" + m_iPort);
-		if (-1 == m_iPort) {
-			return;
-		}
-		Surface surface = holder.getSurface();
-		if (null != m_oPlayerSDK && true == surface.isValid()) {
-			if (false == m_oPlayerSDK.setVideoWindow(m_iPort, 0, holder)) {
-				Log.e(TAG, "Player setVideoWindow failed!");
+		m_playBackSuspension = (LinearLayout) findViewById(R.id.monitor_palyback_suspension);
+		m_preview = (TextView) findViewById(R.id.monitor_preview_img);
+		m_preview.setOnClickListener(this);
+		m_date = (TextView) findViewById(R.id.monitor_date_img);
+		m_date.setOnClickListener(this);
+
+		timeBar = (TimeBar) findViewById(R.id.timebar);
+		m_timeBar = (LinearLayout) findViewById(R.id.monitor_timebar_ll);
+		mTimePickCallback = new TimePickedCallBack() {
+
+			@Override
+			public void onTimePickedCallback(Calendar currentTime) {
+				stopPlayBack();
+				NET_DVR_TIME struBegin = new NET_DVR_TIME();
+				NET_DVR_TIME struEnd = new NET_DVR_TIME();
+				struBegin.dwYear = currentTime.get(Calendar.YEAR);    //获取年
+				struBegin.dwMonth = currentTime.get(Calendar.MONTH) + 1;
+				struBegin.dwDay = currentTime.get(Calendar.DAY_OF_MONTH);
+				struBegin.dwHour = currentTime.get(Calendar.HOUR);
+				struBegin.dwMinute = currentTime.get(Calendar.MINUTE);
+				struBegin.dwSecond = currentTime.get(Calendar.SECOND) + 1;
+				
+				struEnd.dwYear = currentTime.get(Calendar.YEAR);    //获取年
+				struEnd.dwMonth = currentTime.get(Calendar.MONTH) + 1;
+				struEnd.dwDay = currentTime.get(Calendar.DAY_OF_MONTH);
+				struEnd.dwHour = 23;
+				struEnd.dwMinute = 59;
+				struEnd.dwSecond = 59;
+				PlayBack("192.0.1.39", 8000, "admin", "12345", 3, struBegin, struEnd);
 			}
-		}
-	}
 
-	// @Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width,
-			int height) {
-	}
+			@Override
+			public void onMoveTimeCallback(long milliseconds) {
 
-	// @Override
-	public void surfaceDestroyed(SurfaceHolder holder) {
-		Log.i(TAG, "Player setVideoWindow release!" + m_iPort);
-		if (-1 == m_iPort) {
-			return;
-		}
-		if (null != m_oPlayerSDK && true == holder.getSurface().isValid()) {
-			if (false == m_oPlayerSDK.setVideoWindow(m_iPort, 0, null)) {
-				Log.e(TAG, "Player setVideoWindow failed!");
 			}
-		}
-	}
+		};
+		timeBar.setTimeBarCallback(mTimePickCallback);
 
-	CustomAdapter_MonitorInfo m_adapterMonitor;
-
-	private Handler m_handler = new Handler() {
-		public void handleMessage(Message msg) {
-			if (msg.what == API_GET_MONITOR_INFO_LIST_OK) {
-				m_milist = (MonitorInfoList) msg.obj;
-
-				if (m_milist != null) {
-					m_adapterMonitor = new CustomAdapter_MonitorInfo(
-							MonitorActivity.this, m_milist,
-							R.drawable.list_icon_monitor);
-
-					m_listViewMonitors.setAdapter(m_adapterMonitor);
-
-					m_layoutMain.startAnimation(m_aniset.m_aniFadeIn);
-					m_layoutContent.startAnimation(m_aniset.m_aniFadeIn);
-
-					loginAllMonitor(m_handler);
-				}
-			} else if (msg.what == API_GET_FAIL) {
-				closeProcessDialog();
-				AppException exception = (AppException) msg.obj;
-				exception.makeToast(MonitorActivity.this);
-			} else if (msg.what == LOGIN_MONITOR_UPDATE) {
-				if (m_adapterMonitor != null)
-					m_adapterMonitor.notifyDataSetChanged();
-			}
-		}
-	};
-
-	private void loadMonitorInfo() {
-
-		// m_layoutConent.setVisibility(View.GONE);
-
-		getMonitorInfoList(m_handler);
-	}
-
-	void loginAllMonitor(final Handler handler) {
-
-		new Thread() {
-			public void run() {
-
-				int nCount;
-
-				if (m_milist == null || (nCount = m_milist.m_list.size()) == 0)
-					return;
-
-				MonitorInfo mi;
-
-				for (int i = 0; i < nCount; i++) {
-					mi = m_milist.m_list.get(i);
-
-					if (login(mi)) {
-						mi.available = true;
-						bUpdate = true;
-					}
-
-					mi.available = true;
-					bUpdate = true;
-
-					if (i % 5 == 0 || i == nCount - 1) {
-						if (bUpdate) {
-							Message msg = new Message();
-							msg.what = LOGIN_MONITOR_UPDATE;
-							handler.sendMessage(msg);
-							bUpdate = false;
-						}
-					}
-				}
-			}
-		}.start();
 	}
 
 	/**
@@ -278,6 +436,175 @@ public class MonitorActivity extends BaseActivity implements Callback {
 		}
 
 		return true;
+	}
+
+	/**
+	 * 更新视图组件
+	 * 
+	 * @param type
+	 *            1--实时预览；2--监控回放
+	 */
+	public void updateUI(int type) {
+		switch (type) {
+		// 实时预览
+		case 1:
+			m_realPlaySuspension.setVisibility(View.VISIBLE);
+			m_playBackSuspension.setVisibility(View.GONE);
+			m_timeBar.setVisibility(View.GONE);
+			if (m_playMode == m_playHD) {
+				m_palyHD.setBackgroundResource(R.drawable.monitor_hd_select);
+				m_palySD.setBackgroundResource(R.drawable.monitor_sd);
+				m_palyHDText
+						.setTextColor(getResources().getColor(R.color.blue));
+				m_palySDText.setTextColor(getResources()
+						.getColor(R.color.white));
+			} else if (m_playMode == m_playSD) {
+				m_palyHD.setBackgroundResource(R.drawable.monitor_hd);
+				m_palySD.setBackgroundResource(R.drawable.monitor_sd_select);
+				m_palyHDText.setTextColor(getResources()
+						.getColor(R.color.white));
+				m_palySDText
+						.setTextColor(getResources().getColor(R.color.blue));
+			}
+			break;
+		case 2:
+			m_realPlaySuspension.setVisibility(View.GONE);
+			m_playBackSuspension.setVisibility(View.VISIBLE);
+			m_timeBar.setVisibility(View.VISIBLE);
+			break;
+		}
+	}
+	/**
+	 * 
+	 */
+	public void updateTimeBar(final Handler handler) {
+		new Thread() {
+			public void run() {
+				if (m_oPlayerSDK != null) {
+					while (true) {
+						MPSystemTime m = new MPSystemTime();
+						m_oPlayerSDK.getSystemTime(m_iPort, m);
+						Message msg = new Message();
+						msg.what = UPDATE_TIME_BAR;
+						msg.obj = m;
+						handler.sendMessage(msg);
+						
+					}
+				}
+			}
+		}.start();
+	}
+
+	private boolean login(MonitorInfo mi) {
+		try {
+			if (mi.loginID < 0) {
+				// login on the device
+				mi.loginID = loginDevice(mi.ip, mi.port, mi.user, mi.passwd);
+				// mi.loginID = loginDevice("192.0.1.18", 8000, "admin",
+				// "12345");
+				if (mi.loginID < 0) {
+					Log.e(TAG, "This device logins failed!");
+					return false;
+				}
+				// get instance of exception callback and set
+				ExceptionCallBack oexceptionCbf = getExceptiongCbf();
+				if (oexceptionCbf == null) {
+					Log.e(TAG, "ExceptionCallBack object is failed!");
+					return false;
+				}
+
+				if (!HCNetSDK.getInstance().NET_DVR_SetExceptionCallBack(
+						oexceptionCbf)) {
+					Log.e(TAG, "NET_DVR_SetExceptionCallBack is failed!");
+					return false;
+				}
+
+				// m_oLoginBtn.setText("Logout");
+				Log.i(TAG,
+						"Login sucess ********************************************************");
+
+				return true;
+			}
+		} catch (Exception err) {
+			Log.e(TAG, "error: " + err.toString());
+		}
+
+		return false;
+	}
+
+	/**
+	 * @fn loginDevice
+	 * @author huyf
+	 * @brief login on device
+	 * @param NULL
+	 *            [in]
+	 * @param NULL
+	 *            [out]
+	 * @return login ID
+	 */
+	private int loginDevice(String strIP, int nPort, String strUser,
+			String strPasswd) {
+		// get instance
+		m_oNetDvrDeviceInfoV30 = new NET_DVR_DEVICEINFO_V30();
+		if (null == m_oNetDvrDeviceInfoV30) {
+			Log.e(TAG, "HKNetDvrDeviceInfoV30 new is failed!");
+			return -1;
+		}
+
+		int iLogID = HCNetSDK.getInstance().NET_DVR_Login_V30(strIP, nPort,
+				strUser, strPasswd, m_oNetDvrDeviceInfoV30);
+		if (iLogID < 0) {
+			Log.e(TAG, "NET_DVR_Login is failed!Err:"
+					+ HCNetSDK.getInstance().NET_DVR_GetLastError());
+			return -1;
+		}
+
+		Log.i(TAG, "NET_DVR_Login is Successful!");
+
+		return iLogID;
+	}
+
+	private void loadMonitorInfo() {
+
+		// m_layoutConent.setVisibility(View.GONE);
+
+		getMonitorInfoList(m_handler);
+	}
+
+	private void loginAllMonitor(final Handler handler) {
+
+		new Thread() {
+			public void run() {
+
+				int nCount;
+
+				if (m_milist == null || (nCount = m_milist.m_list.size()) == 0)
+					return;
+
+				MonitorInfo mi;
+
+				for (int i = 0; i < nCount; i++) {
+					mi = m_milist.m_list.get(i);
+
+					if (login(mi)) {
+						mi.available = true;
+						bUpdate = true;
+					}
+
+					mi.available = true;
+					bUpdate = true;
+
+					if (i % 5 == 0 || i == nCount - 1) {
+						if (bUpdate) {
+							Message msg = new Message();
+							msg.what = LOGIN_MONITOR_UPDATE;
+							handler.sendMessage(msg);
+							bUpdate = false;
+						}
+					}
+				}
+			}
+		}.start();
 	}
 
 	/*
@@ -321,49 +648,12 @@ public class MonitorActivity extends BaseActivity implements Callback {
 	 * };
 	 */
 
-	boolean login(MonitorInfo mi) {
-		try {
-			if (mi.loginID < 0) {
-				// login on the device
-				mi.loginID = loginDevice(mi.ip, mi.port, mi.user, mi.passwd);
-				if (mi.loginID < 0) {
-					Log.e(TAG, "This device logins failed!");
-					return false;
-				}
-				// get instance of exception callback and set
-				ExceptionCallBack oexceptionCbf = getExceptiongCbf();
-				if (oexceptionCbf == null) {
-					Log.e(TAG, "ExceptionCallBack object is failed!");
-					return false;
-				}
-
-				if (!HCNetSDK.getInstance().NET_DVR_SetExceptionCallBack(
-						oexceptionCbf)) {
-					Log.e(TAG, "NET_DVR_SetExceptionCallBack is failed!");
-					return false;
-				}
-
-				// m_oLoginBtn.setText("Logout");
-				Log.i(TAG,
-						"Login sucess ****************************1***************************");
-
-				return true;
-			}
-		} catch (Exception err) {
-			Log.e(TAG, "error: " + err.toString());
-		}
-
-		return false;
-	};
-
-	/*
-	 * public void logout() { if (m_iLogID >= 0) { if
-	 * (!m_oHCNetSDK.NET_DVR_Logout_V30(m_iLogID)) { Log.e(TAG,
-	 * " NET_DVR_Logout is failed!"); return; } m_iLogID = -1; } }
+	/**
+	 * 监控预览
+	 * 
+	 * @param mi
 	 */
-
-	// Preview listener
-	void preview(MonitorInfo mi) {
+	private void preview(MonitorInfo mi, int playMode) {
 		try {
 			if (mi.loginID < 0) {
 				Log.e(TAG, "please login on device first");
@@ -409,8 +699,8 @@ public class MonitorActivity extends BaseActivity implements Callback {
 
 				ClientInfo.lChannel = channel; // start channel no + preview
 												// channel
-				ClientInfo.lLinkMode = 1 << 31 + 3; // bit 31 -- 0,main
-													// stream;1,sub stream
+				ClientInfo.lLinkMode = playMode << 31 + 3; // bit 31 -- 0,main
+				// stream;1,sub stream
 				// bit 0~30 -- link type,0-TCP;1-UDP;2-multicast;3-RTP
 				ClientInfo.sMultiCastIP = null;
 
@@ -427,18 +717,35 @@ public class MonitorActivity extends BaseActivity implements Callback {
 						"NetSdk Play sucess ***********************3***************************");
 
 				// m_oPreviewBtn.setText("Stop");
+				updateUI(1);
 			}
 		} catch (Exception err) {
 			Log.e(TAG, "error: " + err.toString());
 		}
 	};
 
-	public void stop() {
-		if (m_iPlayID >= 0) {
-			stopPlay();
-			m_iPlayID = -1;
-			// m_oPreviewBtn.setText("Preview");
-		}
+	/**
+	 * @fn getRealPlayerCbf
+	 * @author huyf
+	 * @brief get realplay callback instance
+	 * @param NULL
+	 *            [in]
+	 * @param NULL
+	 *            [out]
+	 * @return callback instance
+	 */
+	private RealPlayCallBack getRealPlayerCbf(final SurfaceView sv) {
+		RealPlayCallBack cbf = new RealPlayCallBack() {
+			SurfaceView m_sv = sv;
+
+			public void fRealDataCallBack(int iRealHandle, int iDataType,
+					byte[] pDataBuffer, int iDataSize) {
+				// player channel 1
+				processRealData(iRealHandle, iDataType, pDataBuffer, iDataSize,
+						Player.STREAM_REALTIME, m_sv);
+			}
+		};
+		return cbf;
 	}
 
 	// configuration listener
@@ -489,50 +796,111 @@ public class MonitorActivity extends BaseActivity implements Callback {
 		}
 		m_iPort = -1;
 		// set id invalid
-		// m_iPlayID = -1;
+		m_iPlayID = -1;
 	}
 
 	/**
-	 * @fn loginDevice
-	 * @author huyf
-	 * @brief login on device
+	 * 监控回放
+	 * 
+	 * @param strIP
+	 * @param nPort
+	 * @param strUser
+	 * @param strPasswd
+	 * @param whichOne
+	 */
+	private void PlayBack(String strIP, int nPort, String strUser,
+			String strPasswd, int whichOne, NET_DVR_TIME struBegin,
+			NET_DVR_TIME struEnd) {
+		try {
+			
+			if (m_PlayBackId < 0) {
+				m_PlayBackId = loginDevice(strIP, nPort, strUser, strPasswd);
+			}
+
+			if (m_iPlaybackID < 0) {
+				if (m_iPlayID >= 0) {
+					Log.i(TAG, "Please stop preview first");
+					return;
+				}
+				PlaybackCallBack fPlaybackCallBack = getPlayerbackPlayerCbf(m_osurfaceView);
+				if (fPlaybackCallBack == null) {
+					Log.e(TAG, "fPlaybackCallBack object is failed!");
+					return;
+				}
+
+				
+
+				m_iPlaybackID = HCNetSDK.getInstance().NET_DVR_PlayBackByTime(
+						m_PlayBackId, whichOne, struBegin, struEnd);
+				if (m_iPlaybackID >= 0) {
+					if (!HCNetSDK.getInstance().NET_DVR_SetPlayDataCallBack(
+							m_iPlaybackID, fPlaybackCallBack)) {
+						Log.e(TAG, "Set playback callback failed!");
+						return;
+					}
+					NET_DVR_PLAYBACK_INFO struPlaybackInfo = null;
+					if (!HCNetSDK.getInstance().NET_DVR_PlayBackControl_V40(
+							m_iPlaybackID,
+							PlaybackControlCommand.NET_DVR_PLAYSTART, null, 0,
+							struPlaybackInfo)) {
+						Log.e(TAG, "net sdk playback start failed!");
+						return;
+					}
+					updateUI(2);
+					updateTimeBar(m_handler);
+				} else {
+					Log.i(TAG, "NET_DVR_PlayBackByTime failed, error code: "
+							+ HCNetSDK.getInstance().NET_DVR_GetLastError());
+				}
+			}
+		} catch (Exception err) {
+			Log.e(TAG, "error: " + err.toString());
+		}
+
+	}
+
+	private void stopPlayBack() {
+		if (!HCNetSDK.getInstance().NET_DVR_StopPlayBack(m_iPlaybackID)) {
+			Log.e(TAG, "net sdk stop playback failed");
+		}
+		// player stop play
+		if (!m_oPlayerSDK.stop(m_iPort)) {
+			Log.e(TAG, "player_stop is failed!");
+		}
+		if (!m_oPlayerSDK.closeStream(m_iPort)) {
+			Log.e(TAG, "closeStream is failed!");
+		}
+		if (!m_oPlayerSDK.freePort(m_iPort)) {
+			Log.e(TAG, "freePort is failed!" + m_iPort);
+		}
+		m_iPort = -1;
+		m_iPlaybackID = -1;
+	}
+
+	/**
+	 * @fn getPlayerbackPlayerCbf
+	 * @author Jerry
+	 * @brief get Playback instance
 	 * @param NULL
 	 *            [in]
 	 * @param NULL
 	 *            [out]
-	 * @return login ID
+	 * @return callback instance
 	 */
-	private int loginDevice(String strIP, int nPort, String strUser,
-			String strPasswd) {
-		// get instance
-		m_oNetDvrDeviceInfoV30 = new NET_DVR_DEVICEINFO_V30();
-		if (null == m_oNetDvrDeviceInfoV30) {
-			Log.e(TAG, "HKNetDvrDeviceInfoV30 new is failed!");
-			return -1;
-		}
-		/*
-		 * String strIP = m_oIPAddr.getText().toString(); int nPort =
-		 * Integer.parseInt(m_oPort.getText().toString()); String strUser =
-		 * m_oUser.getText().toString(); String strPsd =
-		 * m_oPsd.getText().toString(); // call NET_DVR_Login_v30 to login on,
-		 * port 8000 as default
-		 */
-		/*
-		 * String strIP = "192.168.1.90"; int nPort = 8000; String strUser =
-		 * "admin"; String strPasswd = "12345";
-		 */
+	private PlaybackCallBack getPlayerbackPlayerCbf(final SurfaceView sv) {
+		PlaybackCallBack cbf = new PlaybackCallBack() {
 
-		int iLogID = HCNetSDK.getInstance().NET_DVR_Login_V30(strIP, nPort,
-				strUser, strPasswd, m_oNetDvrDeviceInfoV30);
-		if (iLogID < 0) {
-			Log.e(TAG, "NET_DVR_Login is failed!Err:"
-					+ HCNetSDK.getInstance().NET_DVR_GetLastError());
-			return -1;
-		}
+			SurfaceView m_sv = sv;
 
-		Log.i(TAG, "NET_DVR_Login is Successful!");
-
-		return iLogID;
+			@Override
+			public void fPlayDataCallBack(int iPlaybackHandle, int iDataType,
+					byte[] pDataBuffer, int iDataSize) {
+				// player channel 1
+				processRealData(1, iDataType, pDataBuffer, iDataSize,
+						Player.STREAM_FILE, m_sv);
+			}
+		};
+		return cbf;
 	}
 
 	/**
@@ -599,56 +967,6 @@ public class MonitorActivity extends BaseActivity implements Callback {
 			}
 		};
 		return oExceptionCbf;
-	}
-
-	/**
-	 * @fn getRealPlayerCbf
-	 * @author huyf
-	 * @brief get realplay callback instance
-	 * @param NULL
-	 *            [in]
-	 * @param NULL
-	 *            [out]
-	 * @return callback instance
-	 */
-	private RealPlayCallBack getRealPlayerCbf(final SurfaceView sv) {
-		RealPlayCallBack cbf = new RealPlayCallBack() {
-			SurfaceView m_sv = sv;
-
-			public void fRealDataCallBack(int iRealHandle, int iDataType,
-					byte[] pDataBuffer, int iDataSize) {
-				// player channel 1
-				processRealData(iRealHandle, iDataType, pDataBuffer, iDataSize,
-						Player.STREAM_REALTIME, m_sv);
-			}
-		};
-		return cbf;
-	}
-
-	/**
-	 * @fn getPlayerbackPlayerCbf
-	 * @author Jerry
-	 * @brief get Playback instance
-	 * @param NULL
-	 *            [in]
-	 * @param NULL
-	 *            [out]
-	 * @return callback instance
-	 */
-	private PlaybackCallBack getPlayerbackPlayerCbf(final SurfaceView sv) {
-		PlaybackCallBack cbf = new PlaybackCallBack() {
-
-			SurfaceView m_sv = sv;
-
-			@Override
-			public void fPlayDataCallBack(int iPlaybackHandle, int iDataType,
-					byte[] pDataBuffer, int iDataSize) {
-				// player channel 1
-				processRealData(1, iDataType, pDataBuffer, iDataSize,
-						Player.STREAM_FILE, m_sv);
-			}
-		};
-		return cbf;
 	}
 
 	/**
@@ -723,9 +1041,9 @@ public class MonitorActivity extends BaseActivity implements Callback {
 			case HCNetSDK.NET_DVR_STD_AUDIODATA:
 			case HCNetSDK.NET_DVR_STD_VIDEODATA:
 				if (!m_oPlayerSDK.inputData(m_iPort, pDataBuffer, iDataSize)) {
-					Log.e(TAG,
-							"inputData failed with: "
-									+ m_oPlayerSDK.getLastError(m_iPort));
+//					Log.e(TAG,
+//							"inputData failed with: "
+//									+ m_oPlayerSDK.getLastError(m_iPort));
 				}
 				break;
 			default:
@@ -753,37 +1071,5 @@ public class MonitorActivity extends BaseActivity implements Callback {
 
 		// release net SDK resource
 		HCNetSDK.getInstance().NET_DVR_Cleanup();
-	}
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		switch (keyCode) {
-		case KeyEvent.KEYCODE_BACK:
-			int nCount;
-
-			if (m_milist == null || (nCount = m_milist.m_list.size()) == 0)
-				return false;
-
-			MonitorInfo mi;
-			boolean flag = true;
-			for (int i = 0; i < nCount; i++) {
-				mi = m_milist.m_list.get(i);
-				flag = flag && mi.available;
-			}
-			if (!flag) {
-				Toast.makeText(m_AppContext, "正在初始化监控设备，请稍后返回",
-						Toast.LENGTH_SHORT).show();
-			} else {
-				stopPlay();
-				Cleanup();
-				// android.os.Process.killProcess(android.os.Process.myPid());
-				finish();
-			}
-			return false;
-		default:
-			break;
-		}
-
-		return true;
 	}
 }

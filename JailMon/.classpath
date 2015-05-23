@@ -8,11 +8,11 @@
 	<classpathentry kind="lib" path="libs/AVNetSDK.jar"/>
 	<classpathentry kind="lib" path="libs/AVPlaySDK.jar"/>
 	<classpathentry kind="lib" path="libs/tplayer.jar"/>
-	<classpathentry kind="lib" path="libs/HCNetSDK.jar"/>
-	<classpathentry kind="lib" path="libs/PlayerSDK.jar"/>
 	<classpathentry kind="lib" path="libs/android-async-http-1.4.6.jar"/>
 	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="libs/HCNetSDK.jar"/>
+	<classpathentry kind="lib" path="libs/PlayerSDK.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

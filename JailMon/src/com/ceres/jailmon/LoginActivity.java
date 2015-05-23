@@ -9,13 +9,21 @@ package com.ceres.jailmon;
 
 import java.io.File;
 import java.io.FileInputStream;
-
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -26,7 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.ceres.jailmon.data.*;
+import com.ceres.jailmon.data.StringResult;
 
 public class LoginActivity extends BaseActivity {
 
@@ -45,7 +53,7 @@ public class LoginActivity extends BaseActivity {
 	private TextView m_textAuthCode;
 
 	int m_nMode = 0; // 0 - Normal, 1 - Advance
-
+	private String strDevID;
 	class LoginInfo {
 		boolean onoff;
 		String user;
@@ -79,7 +87,7 @@ public class LoginActivity extends BaseActivity {
 
 		m_progressLogin.setVisibility(View.GONE);
 
-		String strDevID = getDeviceID();
+		strDevID = getDeviceID();
 		if (strDevID == null)
 			strDevID = "不正确";
 
@@ -97,8 +105,8 @@ public class LoginActivity extends BaseActivity {
 			finish();
 			EnterMainMenu();
 		}*/
-		m_layoutReg.setVisibility(View.GONE);
-		m_layoutLogin.setVisibility(View.VISIBLE);
+//		m_layoutReg.setVisibility(View.GONE);
+//		m_layoutLogin.setVisibility(View.VISIBLE);
 
 		m_editReg = (EditText) findViewById(R.id.editReg);
 		m_buttonOK = (Button) findViewById(R.id.buttonOK);
@@ -141,8 +149,8 @@ public class LoginActivity extends BaseActivity {
 			@Override
 			public void onClick(View arg0) {
 				//test
-				EnterMainMenu("");
-				//Login();
+				//EnterMainMenu("");
+				Login();
 			}
 		});
 
@@ -209,7 +217,7 @@ public class LoginActivity extends BaseActivity {
 		m_progressLogin.setVisibility(View.VISIBLE);
 		m_buttonLogin.setEnabled(false);
 
-		getAuthResult(m_basehandler, m_logininfo.user, m_logininfo.passwd);
+		getAuthResult(m_basehandler, m_logininfo.user, m_logininfo.passwd, strDevID, getLocalIpAddress());
 	}
 
 	protected void onReceiveAuthResult(StringResult ret) {
@@ -246,6 +254,49 @@ public class LoginActivity extends BaseActivity {
 
 		super.onReceiveFail(exception);
 	}
+	/**
+	 * 获取本机mac地址
+	 * @return string - macaddr
+	 */
+	public String getLocalMacAddress() {  
+        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);  
+        WifiInfo info = wifi.getConnectionInfo();  
+        return info.getMacAddress();  
+    } 
+	/**
+	 * 获取IP地址
+	 * @return string - ip
+	 */
+//	public String getLocalIpAddress() {  
+//        try {  
+//            for (Enumeration<NetworkInterface> en = NetworkInterface  
+//                    .getNetworkInterfaces(); en.hasMoreElements();) {  
+//                NetworkInterface intf = en.nextElement();  
+//                for (Enumeration<InetAddress> enumIpAddr = intf  
+//                        .getInetAddresses(); enumIpAddr.hasMoreElements();) {  
+//                    InetAddress inetAddress = enumIpAddr.nextElement();  
+//                    if (!inetAddress.isLoopbackAddress()) {  
+//                        return inetAddress.getHostAddress().toString();  
+//                    }  
+//                }  
+//            }  
+//        } catch (SocketException ex) {  
+//            Log.e("WifiPreference IpAddress", ex.toString());  
+//        }  
+//        return null;  
+//    } 
+	
+	@SuppressLint("DefaultLocale")
+	private String getLocalIpAddress() {
+        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        // 获取32位整型IP地址
+        int ipAddress = wifiInfo.getIpAddress();
+        //返回整型地址转换成“*.*.*.*”地址
+        return String.format("%d.%d.%d.%d",
+                (ipAddress & 0xff), (ipAddress >> 8 & 0xff),
+                (ipAddress >> 16 & 0xff), (ipAddress >> 24 & 0xff));
+    }
 	
 	private String[] splitRoot(String resultContent){
 		String[] contentArray = null;

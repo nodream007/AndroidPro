@@ -34,6 +34,7 @@ public class CustomAdapter_MonitorInfo extends BaseAdapter {
 	protected int[] m_imgItems;
 	protected int m_nCount;
 	protected int m_imgItem = -1;
+	protected int mSelectedPosition = -1;
 
 	public CustomAdapter_MonitorInfo(Context ctx, MonitorInfoList infolist,
 			int imgItem) {
@@ -81,7 +82,11 @@ public class CustomAdapter_MonitorInfo extends BaseAdapter {
 		} else {
 			listItemView = (ListItemView) convertView.getTag();
 		}
-
+		if(mSelectedPosition == position){
+			convertView.setBackgroundResource(R.drawable.sub_02_selector);
+		}else{
+			convertView.setBackgroundResource(R.drawable.test);
+		}
 		if (m_infolist != null) {
 			MonitorInfo item = m_infolist.m_list.get(position);
 			if (item != null)
@@ -100,6 +105,10 @@ public class CustomAdapter_MonitorInfo extends BaseAdapter {
 		}
 
 		return convertView;
+	}
+	public void setPosition(int position){
+		mSelectedPosition = position;
+		notifyDataSetChanged();
 	}
 
 }

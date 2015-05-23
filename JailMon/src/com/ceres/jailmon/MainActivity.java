@@ -90,80 +90,80 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		// Find all buttons and set the click handler.
 		for (int i = 0; i < button.length; i++) {
 			button[i] = (Button) this.findViewById(m_buttonID[i]);
-			button[i].setOnClickListener(new Button_OnClickListener(
-					m_classActivity[i]));
+			button[i].setOnClickListener(new Button_OnClickListener(m_classActivity[i]));
+			//button[i].setOnClickListener(null);
 		}
 
 		// Invoke SIGN_IN API to notify device ID to server .
-		String root = getIntent().getStringExtra("root");
-	  	String rootArray[] = null;
-	  	if (root.contains(",")) {
-	  		rootArray = root.trim().split(",");
-		}
-	  /*	for(String rootStr:rootArray){
-	  		if("1".equals(rootStr)){
-	  			button[0].setBackgroundResource(R.drawable.mm_01_up);	
-	  			button[0].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[0]));
-	  		}else if("2".equals(rootStr)){
-	  			button[1].setBackgroundResource(R.drawable.mm_02_up);	
-	  			button[1].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[1]));
-	  		}
-	  		else if("3".equals(rootStr)){
-	  			button[2].setBackgroundResource(R.drawable.mm_03_up);
-	  			button[2].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[2]));
-	  		}
-	  		else if("4".equals(rootStr)){
-	  			button[3].setBackgroundResource(R.drawable.mm_04_up);
-	  			button[3].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[3]));
-	  		}
-	  		else if("5".equals(rootStr)){
-	  			button[4].setBackgroundResource(R.drawable.mm_05_up);
-	  			button[4].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[4]));
-	  		}
-	  		else if("6".equals(rootStr)){
-	  			button[5].setBackgroundResource(R.drawable.mm_06_up);
-	  			button[5].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[5]));
-	  		}
-	  		else if("7".equals(rootStr)){
-	  			button[6].setBackgroundResource(R.drawable.mm_07_up);
-	  			button[6].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[6]));
-	  		}
-	  		else if("8".equals(rootStr)){
-	  			button[7].setBackgroundResource(R.drawable.mm_08_up);
-	  			button[7].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[7]));
-	  		}
-	  		else if("9".equals(rootStr)){
-	  			button[8].setBackgroundResource(R.drawable.mm_09_up);
-	  			button[8].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[8]));
-	  		}
-	  		else if("10".equals(rootStr)){
-	  			button[9].setBackgroundResource(R.drawable.mm_10_up);
-	  			button[9].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[9]));
-	  		}
-	  		else if("11".equals(rootStr)){
-	  			button[10].setBackgroundResource(R.drawable.mm_11_up);
-	  			button[10].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[10]));
-	  		}
-	  		else if("12".equals(rootStr)){
-	  			button[11].setBackgroundResource(R.drawable.mm_12_up);
-	  			button[11].setOnClickListener(new Button_OnClickListener(
-						m_classActivity[11]));
-	  		}
-	  	}*/
+//		String root = getIntent().getStringExtra("root");
+//	  	String rootArray[] = null;
+//	  	if (root.contains(",")) {
+//	  		rootArray = root.trim().split(",");
+//		}
+//	  	for(String rootStr:rootArray){
+//	  		if("1".equals(rootStr)){
+//	  			button[0].setBackgroundResource(R.drawable.mm_01_up);	
+//	  			button[0].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[0]));
+//	  		}else if("2".equals(rootStr)){
+//	  			button[1].setBackgroundResource(R.drawable.mm_02_up);	
+//	  			button[1].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[1]));
+//	  		}
+//	  		else if("3".equals(rootStr)){
+//	  			button[2].setBackgroundResource(R.drawable.mm_03_up);
+//	  			button[2].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[2]));
+//	  		}
+//	  		else if("4".equals(rootStr)){
+//	  			button[3].setBackgroundResource(R.drawable.mm_04_up);
+//	  			button[3].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[3]));
+//	  		}
+//	  		else if("5".equals(rootStr)){
+//	  			button[4].setBackgroundResource(R.drawable.mm_05_up);
+//	  			button[4].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[4]));
+//	  		}
+//	  		else if("6".equals(rootStr)){
+//	  			button[5].setBackgroundResource(R.drawable.mm_06_up);
+//	  			button[5].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[5]));
+//	  		}
+//	  		else if("7".equals(rootStr)){
+//	  			button[6].setBackgroundResource(R.drawable.mm_07_up);
+//	  			button[6].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[6]));
+//	  		}
+//	  		else if("8".equals(rootStr)){
+//	  			button[7].setBackgroundResource(R.drawable.mm_08_up);
+//	  			button[7].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[7]));
+//	  		}
+//	  		else if("9".equals(rootStr)){
+//	  			button[8].setBackgroundResource(R.drawable.mm_09_up);
+//	  			button[8].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[8]));
+//	  		}
+//	  		else if("10".equals(rootStr)){
+//	  			button[9].setBackgroundResource(R.drawable.mm_10_up);
+//	  			button[9].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[9]));
+//	  		}
+//	  		else if("11".equals(rootStr)){
+//	  			button[10].setBackgroundResource(R.drawable.mm_11_up);
+//	  			button[10].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[10]));
+//	  		}
+//	  		else if("12".equals(rootStr)){
+//	  			button[11].setBackgroundResource(R.drawable.mm_12_up);
+//	  			button[11].setOnClickListener(new Button_OnClickListener(
+//						m_classActivity[11]));
+//	  		}
+//	  	}
 		signin();
 		
-		startService(new Intent(ArraignmentService.ACTION));
+//		startService(new Intent(ArraignmentService.ACTION));
 	}
 
 	@Override

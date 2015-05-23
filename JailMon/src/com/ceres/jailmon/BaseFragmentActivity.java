@@ -374,26 +374,26 @@ public class BaseFragmentActivity extends FragmentActivity {
 		}.start();
 	}
 
-	public void getAuthResult(final Handler handler, final String user,
-			final String passwd) {
-
-		new Thread() {
-			public void run() {
-				Message msg = new Message();
-
-				try {
-					StringResult info = m_AppContext.getAuthResult(user, passwd);
-					msg.what = API_GET_AUTH_RESULT_OK;
-					msg.obj = info;
-				} catch (AppException e) {
-					e.printStackTrace();
-					msg.what = API_GET_FAIL;
-					msg.obj = e;
-				}
-				handler.sendMessage(msg);
-			}
-		}.start();
-	}
+//	public void getAuthResult(final Handler handler, final String user,
+//			final String passwd) {
+//
+//		new Thread() {
+//			public void run() {
+//				Message msg = new Message();
+//
+//				try {
+//					StringResult info = m_AppContext.getAuthResult(user, passwd);
+//					msg.what = API_GET_AUTH_RESULT_OK;
+//					msg.obj = info;
+//				} catch (AppException e) {
+//					e.printStackTrace();
+//					msg.what = API_GET_FAIL;
+//					msg.obj = e;
+//				}
+//				handler.sendMessage(msg);
+//			}
+//		}.start();
+//	}
 
 	protected void onReceiveAuthResult(AuthResult ret) {
 

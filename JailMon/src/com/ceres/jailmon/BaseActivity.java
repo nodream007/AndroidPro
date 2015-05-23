@@ -347,16 +347,23 @@ public class BaseActivity extends Activity {
 		closeProcessDialog();
 		exception.makeToast(BaseActivity.this);
 	}
-
+	/**
+	 * 登陆
+	 * @param handler
+	 * @param user
+	 * @param passwd
+	 * @param macaddr 本机mac地址
+	 * @param ip 本机ip
+	 */
 	public void getAuthResult(final Handler handler, final String user,
-			final String passwd) {
+			final String passwd, final String macaddr, final String ip) {
 
 		new Thread() {
 			public void run() {
 				Message msg = new Message();
 
 				try {
-					StringResult info = m_AppContext.getAuthResult(user, passwd);
+					StringResult info = m_AppContext.getAuthResult(user, passwd, macaddr, ip);
 					msg.what = API_GET_AUTH_RESULT_OK;
 					msg.obj = info;
 				} catch (AppException e) {
