@@ -462,9 +462,11 @@ public class RecordActivity extends BaseActivity implements OnClickListener,
 			if (mRecorder != null) {
 				mRecorder.reset();
 			}
-			oldView.findViewById(R.id.record_history_play)
-			.setBackgroundResource(R.drawable.audition);
-			stopPlay();
+			if (oldView != null) {
+				oldView.findViewById(R.id.record_history_play)
+				.setBackgroundResource(R.drawable.audition);
+				stopPlay();
+			}
 			mState = IDLE_STATE;
 			break;
 		case R.id.startRecord:

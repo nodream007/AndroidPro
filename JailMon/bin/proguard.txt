@@ -1,6 +1,9 @@
 # view AndroidManifest.xml #generated:17
 -keep class com.ceres.jailmon.AppContext { <init>(...); }
 
+# view AndroidManifest.xml #generated:143
+-keep class com.ceres.jailmon.ArraignmentActivity { <init>(...); }
+
 # view AndroidManifest.xml #generated:222
 -keep class com.ceres.jailmon.BootBroadcastReceiver { <init>(...); }
 
@@ -39,9 +42,6 @@
 
 # view AndroidManifest.xml #generated:185
 -keep class com.ceres.jailmon.NoteActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:143
--keep class com.ceres.jailmon.OutInfoActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:122
 -keep class com.ceres.jailmon.PatrolMapActivity { <init>(...); }
@@ -85,12 +85,16 @@
 # view AndroidManifest.xml #generated:178
 -keep class com.ceres.jailmon.ThreeFixedTabActivity { <init>(...); }
 
+# view 1280x752\res/layout-1280x752/monitor.xml #generated:216
 # view res/layout/monitor.xml #generated:216
 -keep class com.ceres.jailmon.component.TimeBar { <init>(...); }
 
 # view AndroidManifest.xml #generated:235
 -keep class com.ceres.jailmon.service.ArraignmentService { <init>(...); }
 
+# view 1280x752\res/layout-1280x752/dhtest.xml #generated:126
+# view 1280x752\res/layout-1280x752/fuck.xml #generated:59
+# view 1280x752\res/layout-1280x752/monitordh.xml #generated:68
 # view res/layout/dhtest.xml #generated:126
 # view res/layout/fuck.xml #generated:59
 # view res/layout/monitordh.xml #generated:68

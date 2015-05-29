@@ -141,7 +141,7 @@
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
         </activity>
         <activity
-            android:name="com.ceres.jailmon.OutInfoActivity"
+            android:name="com.ceres.jailmon.ArraignmentActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="landscape"

@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.ceres.jailmon.data.SignInResult;
-import com.ceres.jailmon.service.ArraignmentService;
 
 /**
  * Activity for Main Menu, which contains all entries of functions.
@@ -67,12 +66,13 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 				R.id.button04, R.id.button05, R.id.button06, R.id.button07,
 				R.id.button08, R.id.button09, R.id.button10, R.id.button11,
 				R.id.button12 };
-		int[] m_buttomDrawableID = {R.drawable.mm_01_up_gray,R.drawable.mm_02_up_gray,
-				R.drawable.mm_03_up_gray,R.drawable.mm_04_up_gray,R.drawable.mm_05_down,
-				R.drawable.mm_06_up_gray,R.drawable.mm_07_up_gray,R.drawable.mm_08_up_gray,
-				R.drawable.mm_09_up_gray,R.drawable.mm_10_up_gray,R.drawable.mm_11_up_gray,
-				R.drawable.mm_12_up_gray
-		};
+		int[] m_buttomDrawableID = { R.drawable.mm_01_up_gray,
+				R.drawable.mm_02_up_gray, R.drawable.mm_03_up_gray,
+				R.drawable.mm_04_up_gray, R.drawable.mm_05_down,
+				R.drawable.mm_06_up_gray, R.drawable.mm_07_up_gray,
+				R.drawable.mm_08_up_gray, R.drawable.mm_09_up_gray,
+				R.drawable.mm_10_up_gray, R.drawable.mm_11_up_gray,
+				R.drawable.mm_12_up_gray };
 		Class<?>[] m_classActivity = {
 				ShiftInfoActivity.class,
 				bVer2 ? PrisonerInfoGridActivity.class
@@ -82,88 +82,79 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 				bVer2 ? SecurityRBActivity.class : SecurityActivity.class,
 				MedicineActivity.class, PatrolMapActivity.class,
 				bVer2 ? ThreeFixedTabActivity.class : CallingActivity.class,
-				OutInfoActivity.class, PurchaseActivity.class,
-				PowerInfoActivity.class, SettingActivity.class, };//LearningActivity
+				ArraignmentActivity.class, PurchaseActivity.class,
+				PowerInfoActivity.class, SettingActivity.class, };// LearningActivity
 
 		Button[] button = new Button[m_buttonID.length];
 
 		// Find all buttons and set the click handler.
 		for (int i = 0; i < button.length; i++) {
 			button[i] = (Button) this.findViewById(m_buttonID[i]);
-			button[i].setOnClickListener(new Button_OnClickListener(m_classActivity[i]));
-			//button[i].setOnClickListener(null);
+			 button[i].setOnClickListener(new
+			 Button_OnClickListener(m_classActivity[i]));
+//			button[i].setOnClickListener(null);
 		}
 
 		// Invoke SIGN_IN API to notify device ID to server .
 //		String root = getIntent().getStringExtra("root");
-//	  	String rootArray[] = null;
-//	  	if (root.contains(",")) {
-//	  		rootArray = root.trim().split(",");
+//		String rootArray[] = null;
+//		if (root.contains(",")) {
+//			rootArray = root.trim().split(",");
 //		}
-//	  	for(String rootStr:rootArray){
-//	  		if("1".equals(rootStr)){
-//	  			button[0].setBackgroundResource(R.drawable.mm_01_up);	
-//	  			button[0].setOnClickListener(new Button_OnClickListener(
+//		for (String rootStr : rootArray) {
+//			if ("1".equals(rootStr)) {
+//				button[0].setBackgroundResource(R.drawable.mm_01);
+//				button[0].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[0]));
-//	  		}else if("2".equals(rootStr)){
-//	  			button[1].setBackgroundResource(R.drawable.mm_02_up);	
-//	  			button[1].setOnClickListener(new Button_OnClickListener(
+//			} else if ("2".equals(rootStr)) {
+//				button[1].setBackgroundResource(R.drawable.mm_02);
+//				button[1].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[1]));
-//	  		}
-//	  		else if("3".equals(rootStr)){
-//	  			button[2].setBackgroundResource(R.drawable.mm_03_up);
-//	  			button[2].setOnClickListener(new Button_OnClickListener(
+//			} else if ("3".equals(rootStr)) {
+//				button[2].setBackgroundResource(R.drawable.mm_03);
+//				button[2].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[2]));
-//	  		}
-//	  		else if("4".equals(rootStr)){
-//	  			button[3].setBackgroundResource(R.drawable.mm_04_up);
-//	  			button[3].setOnClickListener(new Button_OnClickListener(
+//			} else if ("4".equals(rootStr)) {
+//				button[3].setBackgroundResource(R.drawable.mm_04);
+//				button[3].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[3]));
-//	  		}
-//	  		else if("5".equals(rootStr)){
-//	  			button[4].setBackgroundResource(R.drawable.mm_05_up);
-//	  			button[4].setOnClickListener(new Button_OnClickListener(
+//			} else if ("5".equals(rootStr)) {
+//				button[4].setBackgroundResource(R.drawable.mm_05);
+//				button[4].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[4]));
-//	  		}
-//	  		else if("6".equals(rootStr)){
-//	  			button[5].setBackgroundResource(R.drawable.mm_06_up);
-//	  			button[5].setOnClickListener(new Button_OnClickListener(
+//			} else if ("6".equals(rootStr)) {
+//				button[5].setBackgroundResource(R.drawable.mm_06);
+//				button[5].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[5]));
-//	  		}
-//	  		else if("7".equals(rootStr)){
-//	  			button[6].setBackgroundResource(R.drawable.mm_07_up);
-//	  			button[6].setOnClickListener(new Button_OnClickListener(
+//			} else if ("7".equals(rootStr)) {
+//				button[6].setBackgroundResource(R.drawable.mm_07);
+//				button[6].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[6]));
-//	  		}
-//	  		else if("8".equals(rootStr)){
-//	  			button[7].setBackgroundResource(R.drawable.mm_08_up);
-//	  			button[7].setOnClickListener(new Button_OnClickListener(
+//			} else if ("8".equals(rootStr)) {
+//				button[7].setBackgroundResource(R.drawable.mm_13);
+//				button[7].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[7]));
-//	  		}
-//	  		else if("9".equals(rootStr)){
-//	  			button[8].setBackgroundResource(R.drawable.mm_09_up);
-//	  			button[8].setOnClickListener(new Button_OnClickListener(
+//			} else if ("9".equals(rootStr)) {
+//				button[8].setBackgroundResource(R.drawable.mm_09);
+//				button[8].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[8]));
-//	  		}
-//	  		else if("10".equals(rootStr)){
-//	  			button[9].setBackgroundResource(R.drawable.mm_10_up);
-//	  			button[9].setOnClickListener(new Button_OnClickListener(
+//			} else if ("10".equals(rootStr)) {
+//				button[9].setBackgroundResource(R.drawable.mm_10);
+//				button[9].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[9]));
-//	  		}
-//	  		else if("11".equals(rootStr)){
-//	  			button[10].setBackgroundResource(R.drawable.mm_11_up);
-//	  			button[10].setOnClickListener(new Button_OnClickListener(
+//			} else if ("11".equals(rootStr)) {
+//				button[10].setBackgroundResource(R.drawable.mm_11);
+//				button[10].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[10]));
-//	  		}
-//	  		else if("12".equals(rootStr)){
-//	  			button[11].setBackgroundResource(R.drawable.mm_12_up);
-//	  			button[11].setOnClickListener(new Button_OnClickListener(
+//			} else if ("12".equals(rootStr)) {
+//				button[11].setBackgroundResource(R.drawable.mm_12);
+//				button[11].setOnClickListener(new Button_OnClickListener(
 //						m_classActivity[11]));
-//	  		}
-//	  	}
+//			}
+//		}
 		signin();
-		
-//		startService(new Intent(ArraignmentService.ACTION));
+
+		// startService(new Intent(ArraignmentService.ACTION));
 	}
 
 	@Override

@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-import com.ceres.jailmon.OutInfoActivity;
+
+import com.ceres.jailmon.ArraignmentActivity;
 import com.ceres.jailmon.R;
+
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,6 +15,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -37,6 +40,7 @@ public class ArraignmentService extends Service {
 	private DatagramSocket socket;
 
 	// private Notification mNotification;
+	private boolean flag = true;
 
 	public final static int NOTIFICATION_ID = 24352;
 
@@ -80,6 +84,8 @@ public class ArraignmentService extends Service {
 	public void onDestroy() {
 		Log.i(TAG, "onDestroy");
 		super.onDestroy();
+		flag = false;
+		socket.close();// 不使用了记得要关闭
 	}
 
 	/**
@@ -93,7 +99,7 @@ public class ArraignmentService extends Service {
 					// 实例化的端口号要和发送时的socket一致，否则收不到data
 					socket = new DatagramSocket(port);
 					byte data[] = new byte[4 * 1024];
-					while (true) {
+					while (flag) {
 						// 参数一:要接受的data 参数二：data的长度
 						DatagramPacket packet = new DatagramPacket(data,
 								data.length);
@@ -113,8 +119,10 @@ public class ArraignmentService extends Service {
 					// socket.close();// 不使用了记得要关闭
 				} catch (SocketException e) {
 					e.printStackTrace();
+					socket.close();// 不使用了记得要关闭
 				} catch (IOException e) {
 					e.printStackTrace();
+					socket.close();// 不使用了记得要关闭
 				}
 			}
 
@@ -130,9 +138,9 @@ public class ArraignmentService extends Service {
 				R.drawable.stat_sys_call_record, receive,
 				System.currentTimeMillis());
 		notification.flags = Notification.FLAG_AUTO_CANCEL;
-		notification.defaults = Notification.DEFAULT_SOUND
-				| Notification.DEFAULT_VIBRATE;
-		Intent i = new Intent(ArraignmentService.this, OutInfoActivity.class);
+		notification.defaults = Notification.DEFAULT_VIBRATE;
+		notification.sound=Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.arraignment_notificatifon); 
+		Intent i = new Intent(ArraignmentService.this, ArraignmentActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 				| Intent.FLAG_ACTIVITY_NEW_TASK);
 		PendingIntent contentIntent = PendingIntent.getActivity(this,

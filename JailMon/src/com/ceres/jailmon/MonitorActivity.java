@@ -13,6 +13,8 @@ import java.util.Date;
 import org.MediaPlayer.PlayM4.Player;
 import org.MediaPlayer.PlayM4.Player.MPSystemTime;
 
+import android.app.DatePickerDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,6 +29,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -75,7 +78,9 @@ public class MonitorActivity extends BaseActivity implements Callback,
 	private LinearLayout m_playBackSuspension;
 	private TextView m_preview;
 	private TextView m_date;
-
+	
+	private int m_year, m_monthOfYear, m_dayOfMonth, m_hourOfDay, m_minute, m_second;
+	
 	private TimeBar timeBar;
 	private LinearLayout m_timeBar;
 	/** 时间回调函数 */
@@ -107,6 +112,10 @@ public class MonitorActivity extends BaseActivity implements Callback,
 	private boolean bUpdate = false;
 
 	private CustomAdapter_MonitorInfo m_adapterMonitor;
+	
+	private Thread updateTimeBarThread;
+	
+	private boolean isflag = true;
 
 	private Handler m_handler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -144,7 +153,7 @@ public class MonitorActivity extends BaseActivity implements Callback,
 				cal.set(Calendar.MINUTE, m.min);
 				cal.set(Calendar.SECOND, m.sec);
 				
-				timeBar.reset(cal.getTime());
+				timeBar.setCurrentTime(cal.getTime());
 			}
 		}
 	};
@@ -218,6 +227,7 @@ public class MonitorActivity extends BaseActivity implements Callback,
 				Toast.makeText(m_AppContext, "正在初始化监控设备，请稍后返回",
 						Toast.LENGTH_SHORT).show();
 			} else {
+				isflag = false;
 				stopPlay();
 				Cleanup();
 				// android.os.Process.killProcess(android.os.Process.myPid());
@@ -232,37 +242,37 @@ public class MonitorActivity extends BaseActivity implements Callback,
 	}
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
+		isflag = false;
 		super.onDestroy();
-		m_handler.removeMessages(UPDATE_TIME_BAR);
 	}
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.monitor_playback_img:
 			stopPlay();
-			Calendar cal = Calendar.getInstance();
-			cal.add(Calendar.DATE, -1);
-			cal.set(Calendar.HOUR_OF_DAY, 0);
-			cal.set(Calendar.SECOND, 0);
-			cal.set(Calendar.MINUTE, 0);
-			cal.set(Calendar.MILLISECOND, 0);
-			NET_DVR_TIME struBegin = new NET_DVR_TIME();
-			NET_DVR_TIME struEnd = new NET_DVR_TIME();
-			struBegin.dwYear = cal.get(Calendar.YEAR);    //获取年
-			struBegin.dwMonth = cal.get(Calendar.MONTH) + 1;
-			struBegin.dwDay = cal.get(Calendar.DAY_OF_MONTH);
-			struBegin.dwHour = cal.get(Calendar.HOUR);
-			struBegin.dwMinute = cal.get(Calendar.MINUTE);
-			struBegin.dwSecond = cal.get(Calendar.SECOND) + 1;
-
-			struEnd.dwYear = cal.get(Calendar.YEAR);
-			struEnd.dwMonth = cal.get(Calendar.MONTH) + 1;
-			struEnd.dwDay = cal.get(Calendar.DAY_OF_MONTH) + 1;
-			struEnd.dwHour = 23;
-			struEnd.dwMinute = 59;
-			struEnd.dwSecond = 59;
-			PlayBack("192.0.1.39", 8000, "admin", "12345", 3, struBegin, struEnd);
+			startPlayBack();
+//			Calendar cal = Calendar.getInstance();
+//			cal.add(Calendar.DATE, -1);
+//			cal.set(Calendar.HOUR_OF_DAY, 0);
+//			cal.set(Calendar.SECOND, 0);
+//			cal.set(Calendar.MINUTE, 0);
+//			cal.set(Calendar.MILLISECOND, 0);
+//			NET_DVR_TIME struBegin = new NET_DVR_TIME();
+//			NET_DVR_TIME struEnd = new NET_DVR_TIME();
+//			struBegin.dwYear = cal.get(Calendar.YEAR);    //获取年
+//			struBegin.dwMonth = cal.get(Calendar.MONTH) + 1;
+//			struBegin.dwDay = cal.get(Calendar.DAY_OF_MONTH);
+//			struBegin.dwHour = cal.get(Calendar.HOUR);
+//			struBegin.dwMinute = cal.get(Calendar.MINUTE);
+//			struBegin.dwSecond = cal.get(Calendar.SECOND) + 1;
+//
+//			struEnd.dwYear = cal.get(Calendar.YEAR);
+//			struEnd.dwMonth = cal.get(Calendar.MONTH) + 1;
+//			struEnd.dwDay = cal.get(Calendar.DAY_OF_MONTH) + 1;
+//			struEnd.dwHour = 23;
+//			struEnd.dwMinute = 59;
+//			struEnd.dwSecond = 59;
+//			PlayBack("192.0.1.39", 8000, "admin", "12345", 3, struBegin, struEnd);
 			break;
 		case R.id.monitor_hd_ll:
 			stopPlay();
@@ -280,10 +290,63 @@ public class MonitorActivity extends BaseActivity implements Callback,
 			preview(m_nowMonitorInfo, m_playHD);
 			break;
 		case R.id.monitor_date_img:
+			/**
+			 * 实例化一个DatePickerDialog的对象
+			 * 第二个参数是一个DatePickerDialog.OnDateSetListener匿名内部类
+			 * ，当用户选择好日期点击done会调用里面的onDateSet方法
+			 */
+			DatePickerDialog datePickerDialog = new DatePickerDialog(
+					this,
+					new DatePickerDialog.OnDateSetListener() {
+						@Override
+						public void onDateSet(DatePicker view, int year,
+								int monthOfYear, int dayOfMonth) {
+							m_year = year;
+							m_monthOfYear = monthOfYear;
+							m_dayOfMonth = dayOfMonth;
+							m_hourOfDay = 0;
+							m_minute = 0;
+							m_second = 0;
+							startPlayBack();
+						}
+					}, m_year, m_monthOfYear, m_dayOfMonth);
 
+			datePickerDialog.show();
 			break;
 		}
 
+	}
+	/**
+	 * @fn initeSdk
+	 * @author huyf
+	 * @brief SDK init
+	 * @param NULL
+	 *            [in]
+	 * @param NULL
+	 *            [out]
+	 * @return true - success;false - fail
+	 */
+	private boolean initeSdk() {
+		// get an instance and init net sdk
+		/*
+		 * m_oHCNetSDK = new HCNetSDK(); if (null == m_oHCNetSDK) { Log.e(TAG,
+		 * "m_oHCNetSDK new is failed!"); return false; }
+		 */
+	
+		if (!HCNetSDK.getInstance().NET_DVR_Init()) {
+			Log.e(TAG, "HCNetSDK init is failed!");
+			return false;
+		}
+		HCNetSDK.getInstance().NET_DVR_SetLogToFile(3, "/sdcard/sdklog/", true);
+	
+		// init player
+		m_oPlayerSDK = Player.getInstance();
+		if (m_oPlayerSDK == null) {
+			Log.e(TAG, "PlayCtrl getInstance failed!");
+			return false;
+		}
+	
+		return true;
 	}
 
 	/**
@@ -318,6 +381,7 @@ public class MonitorActivity extends BaseActivity implements Callback,
 					Toast.makeText(m_AppContext, "正在初始化监控设备，请稍后返回",
 							Toast.LENGTH_SHORT).show();
 				} else {
+					isflag = false;
 					stopPlay();
 					stopPlayBack();
 					Cleanup();
@@ -370,72 +434,42 @@ public class MonitorActivity extends BaseActivity implements Callback,
 		m_preview.setOnClickListener(this);
 		m_date = (TextView) findViewById(R.id.monitor_date_img);
 		m_date.setOnClickListener(this);
-
-		timeBar = (TimeBar) findViewById(R.id.timebar);
-		m_timeBar = (LinearLayout) findViewById(R.id.monitor_timebar_ll);
-		mTimePickCallback = new TimePickedCallBack() {
-
-			@Override
-			public void onTimePickedCallback(Calendar currentTime) {
-				stopPlayBack();
-				NET_DVR_TIME struBegin = new NET_DVR_TIME();
-				NET_DVR_TIME struEnd = new NET_DVR_TIME();
-				struBegin.dwYear = currentTime.get(Calendar.YEAR);    //获取年
-				struBegin.dwMonth = currentTime.get(Calendar.MONTH) + 1;
-				struBegin.dwDay = currentTime.get(Calendar.DAY_OF_MONTH);
-				struBegin.dwHour = currentTime.get(Calendar.HOUR);
-				struBegin.dwMinute = currentTime.get(Calendar.MINUTE);
-				struBegin.dwSecond = currentTime.get(Calendar.SECOND) + 1;
-				
-				struEnd.dwYear = currentTime.get(Calendar.YEAR);    //获取年
-				struEnd.dwMonth = currentTime.get(Calendar.MONTH) + 1;
-				struEnd.dwDay = currentTime.get(Calendar.DAY_OF_MONTH);
-				struEnd.dwHour = 23;
-				struEnd.dwMinute = 59;
-				struEnd.dwSecond = 59;
-				PlayBack("192.0.1.39", 8000, "admin", "12345", 3, struBegin, struEnd);
-			}
-
-			@Override
-			public void onMoveTimeCallback(long milliseconds) {
-
-			}
-		};
-		timeBar.setTimeBarCallback(mTimePickCallback);
-
+		initTimeBar();
 	}
 
 	/**
-	 * @fn initeSdk
-	 * @author huyf
-	 * @brief SDK init
-	 * @param NULL
-	 *            [in]
-	 * @param NULL
-	 *            [out]
-	 * @return true - success;false - fail
+	 * 初始化时间条
 	 */
-	private boolean initeSdk() {
-		// get an instance and init net sdk
-		/*
-		 * m_oHCNetSDK = new HCNetSDK(); if (null == m_oHCNetSDK) { Log.e(TAG,
-		 * "m_oHCNetSDK new is failed!"); return false; }
-		 */
-
-		if (!HCNetSDK.getInstance().NET_DVR_Init()) {
-			Log.e(TAG, "HCNetSDK init is failed!");
-			return false;
-		}
-		HCNetSDK.getInstance().NET_DVR_SetLogToFile(3, "/sdcard/sdklog/", true);
-
-		// init player
-		m_oPlayerSDK = Player.getInstance();
-		if (m_oPlayerSDK == null) {
-			Log.e(TAG, "PlayCtrl getInstance failed!");
-			return false;
-		}
-
-		return true;
+	private void initTimeBar() {
+		Calendar calendar = Calendar.getInstance();
+		m_year = calendar.get(Calendar.YEAR);
+		m_monthOfYear = calendar.get(Calendar.MONTH) + 1;
+		m_dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH) - 1;// 默认播放前一天的回放
+		m_hourOfDay = 0;
+		m_minute = 0;
+		m_second = 0;
+		
+		timeBar = (TimeBar) findViewById(R.id.timebar);
+		m_timeBar = (LinearLayout) findViewById(R.id.monitor_timebar_ll);
+		mTimePickCallback = new TimePickedCallBack() {
+	
+			@Override
+			public void onTimePickedCallback(Calendar currentTime) {
+				m_year = currentTime.get(Calendar.YEAR);    //获取年
+				m_monthOfYear = currentTime.get(Calendar.MONTH) + 1;
+				m_dayOfMonth = currentTime.get(Calendar.DAY_OF_MONTH);
+				m_hourOfDay = currentTime.get(Calendar.HOUR);
+				m_minute = currentTime.get(Calendar.MINUTE);
+				m_second = currentTime.get(Calendar.SECOND);
+				startPlayBack();
+			}
+	
+			@Override
+			public void onMoveTimeCallback(long milliseconds) {
+	
+			}
+		};
+		timeBar.setTimeBarCallback(mTimePickCallback);
 	}
 
 	/**
@@ -478,10 +512,10 @@ public class MonitorActivity extends BaseActivity implements Callback,
 	 * 
 	 */
 	public void updateTimeBar(final Handler handler) {
-		new Thread() {
+		updateTimeBarThread = new Thread() {
 			public void run() {
 				if (m_oPlayerSDK != null) {
-					while (true) {
+					while (isflag) {
 						MPSystemTime m = new MPSystemTime();
 						m_oPlayerSDK.getSystemTime(m_iPort, m);
 						Message msg = new Message();
@@ -492,8 +526,30 @@ public class MonitorActivity extends BaseActivity implements Callback,
 					}
 				}
 			}
-		}.start();
+		};
+		updateTimeBarThread.start();
 	}
+//	Runnable updateTimeBar = new Runnable(){  
+//		  public void run(){  
+//		    //以上代码略  
+//		    //延迟1000毫秒，执行这个线程的[color=red]run[/color]方法  
+//			  m_handler.postDelayed(updateTimeBar,1000);  
+//		  }  
+//		};
+//	private class myAsync extends AsyncTask<Void, Integer, Void> {
+//
+//		@Override
+//		protected Void doInBackground(Void... arg0) {
+//			if (m_oPlayerSDK != null) {
+//				while (isflag) {
+//					MPSystemTime m = new MPSystemTime();
+//					m_oPlayerSDK.getSystemTime(m_iPort, m);
+//				}
+//			}
+//			return null;
+//		}
+//		
+//	}
 
 	private boolean login(MonitorInfo mi) {
 		try {
@@ -797,6 +853,29 @@ public class MonitorActivity extends BaseActivity implements Callback,
 		m_iPort = -1;
 		// set id invalid
 		m_iPlayID = -1;
+	}
+
+	/**
+	 * 开始监控回放
+	 */
+	private void startPlayBack() {
+		stopPlayBack();
+		NET_DVR_TIME struBegin = new NET_DVR_TIME();
+		NET_DVR_TIME struEnd = new NET_DVR_TIME();
+		struBegin.dwYear = m_year;    //获取年
+		struBegin.dwMonth = m_monthOfYear;
+		struBegin.dwDay = m_dayOfMonth;
+		struBegin.dwHour = m_hourOfDay;
+		struBegin.dwMinute = m_minute;
+		struBegin.dwSecond = m_second;
+		
+		struEnd.dwYear = m_year;    //获取年
+		struEnd.dwMonth = m_monthOfYear;
+		struEnd.dwDay = m_dayOfMonth +1; // 默认播放两个自然日的回放
+		struEnd.dwHour = 23;
+		struEnd.dwMinute = 59;
+		struEnd.dwSecond = 59;
+		PlayBack("192.0.1.39", 8000, "admin", "12345", 3, struBegin, struEnd);
 	}
 
 	/**

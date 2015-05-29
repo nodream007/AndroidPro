@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:id="@+id/medicine_name_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/medicine_name"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/medicine_sub_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicine_name_id"
+        android:gravity="center"
+        android:paddingBottom="25dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/sub"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/sub_btn"
+            android:paddingBottom="25dp"
+            android:paddingLeft="20dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/medicine_num_edit"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicine_sub_id"
+        android:layout_alignTop="@id/medicine_sub_id"
+        android:layout_below="@id/medicine_name_id"
+        android:layout_toRightOf="@id/medicine_sub_id"
+        android:background="@drawable/bg_without_corner"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:hint="0"
+        android:inputType="number"
+        />
+
+    <LinearLayout
+        android:id="@+id/medicine_num_add_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicine_sub_id"
+        android:layout_alignTop="@id/medicine_sub_id"
+        android:layout_below="@id/medicine_name_id"
+        android:layout_toRightOf="@id/medicine_num_edit"
+        android:gravity="center"
+        android:paddingBottom="25dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/add"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/add_btn" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/medicine_type_spinner"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicine_num_edit"
+        android:layout_alignRight="@id/medicine_name_id"
+        android:layout_alignTop="@id/medicine_num_edit"
+        android:layout_below="@id/medicine_name_id"
+        android:background="@drawable/selet_dw"
+        android:gravity="center" />
+
+</RelativeLayout>

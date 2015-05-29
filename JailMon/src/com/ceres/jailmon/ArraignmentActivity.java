@@ -23,7 +23,7 @@ import com.ceres.jailmon.data.CellList;
 import com.ceres.jailmon.data.OutInfoList;
 import com.ceres.jailmon.data.TXResult;
 
-public class OutInfoActivity extends BaseActivity implements btnListener{
+public class ArraignmentActivity extends BaseActivity implements btnListener{
 
 	private LinearLayout m_layoutCells, m_layoutContent;
 	private ListView m_lvCells, m_lvContent;
@@ -97,7 +97,7 @@ public class OutInfoActivity extends BaseActivity implements btnListener{
 		if (m_celllist != null) {
 
 			mAdapter = new CustomAdapter_MainList(
-					OutInfoActivity.this, m_celllist.getList(),
+					ArraignmentActivity.this, m_celllist.getList(),
 					R.drawable.list_icon_home);
 
 			m_lvCells.setAdapter(mAdapter);
@@ -119,7 +119,7 @@ public class OutInfoActivity extends BaseActivity implements btnListener{
 			getAllOutInfoPhoto(m_basehandler, m_outinfolist);
 			adapter = new CustomAdapter_NormalInfo_ForTX(this.getApplicationContext(),
 					m_outinfolist.m_list);
-			adapter.setListener(OutInfoActivity.this);
+			adapter.setListener(ArraignmentActivity.this);
 			m_lvContent.setAdapter(adapter);
 			m_lvContent.setLayoutAnimation(m_aniset.m_listController);
 			m_layoutContent.setVisibility(View.VISIBLE);
